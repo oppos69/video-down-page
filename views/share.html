@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 50px;">
+<head>
+  <title>播放器下载</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="applicable-device" content="pc,mobile">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="400" />
+    <meta property="og:image:height" content="600" />
+    <meta name="medium" content="image" />
+    <meta name=“viewport” content=“width=device-width, viewport-fit=cover”>
+    <link rel="shortcut icon" href="/public/favicon.ico">
+    <link rel="stylesheet" href="/public/styles/share.css">
+</head>
+<body data-clipboard-target="#bar2" data-clipboard-action="copy">
+  {{if showWeixinTip}}
+  <div id="weixin-tip"><p><img class="share-img" src="{{renderData.shareBg}}" style="width: 100%;height:100%;object-fit: cover;" alt="微信打开"><img class="share-img" src="/public/images/share/share_guide.png" style="width: 100%;" alt="微信打开"></p></div>
+  {{else}}
+  <div class="container">
+    <!-- 下载提示 -->
+    <div class="download_panel">
+      <img src="/public/images/share/app_icon.jpg" alt="" class="app_icon">
+      <div class="download_tips">
+        <div class="app_name">无聊</div>
+        <div class="app_desc">高清在线视频</div>
+      </div>
+      <div class="btn_app_download">
+        点击下载
+      </div>
+    </div>
+    <!-- 动作大片 -->
+    <div class="action_panel">
+      <div class="action_title_panel">
+        <div class="title_name">
+          直播
+        </div>
+        <div class="action_title_more">
+          查看更多
+          <span class="img_more bg-more_icon"></span>
+          <!-- <img src="/public/images/share/more_icon.png"  alt="" srcset=""> -->
+        </div>
+      </div>
+      <div class="action_movies">
+        {{each renderData.movies}}
+        <div class="movie">
+          <div class="movie_title_img"><img src="{{$value.banner}}" alt="" onerror="this.src='{{$value.back_banner}}';" 
+              class="movie_title_img"><span class="movie_category">{{$value.category}}</span></div>
+          <div class="movie_title">{{$value.name}}</div>
+          <div class="movie_play_num">{{$value.play}}</div>
+        </div>
+        {{/each}}
+        
+      </div>
+    </div>
+    <!-- 热门评论 -->
+    <div class="comment_panel">
+      <div class="action_title_panel">
+        <div class="title_name">
+          热门评论
+        </div>
+        <div class="action_title_more">
+          查看更多
+          <span class="img_more bg-more_icon"></span>
+          <!-- <img src="/public/images/share/more_icon.png" class="img_more" alt="" srcset=""> -->
+        </div>
+      </div>
+      <div class="comment_list">
+        {{each renderData.comment_data}}
+        <div class="comment"><img loading="lazy" lazyload="true" data-original="{{$value.avatar}}" alt="" class="comment_avatar">
+          <div class="comment_info">
+            <div class="name">{{$value.username}}</div>
+            <div class="content">{{$value.comment}}</div>
+          </div>
+          <div class="comment_time">{{$value.time}}</div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+    <!-- 底部下载提示 -->
+    <div class="download_panel foot_panel">
+      <div class="btn_install">
+        <span class="app_icon  bg-InstallStep"></span>
+      </div>
+      
+      <!-- <img src="/public/images/share/InstallStep.png" alt="" class=""> -->
+      <div class="btn_install">
+        <div class="download_tips btn_install">
+          <div class="app_name">安装教程</div>
+        </div>
+      </div>
+      <div class="foot_center">
+        <div class="btn_app_download">
+          点击下载
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div id="downloadQRCode" style="">
+    <div class="download android">
+      <div id="android_qrcode"></div>
+      <div class="text">扫码下载</div>
+    </div>
+<!--    <div class="download ios">-->
+<!--      <div id="ios_qrcode"></div>-->
+<!--      <div class="text">IOS</div>-->
+<!--    </div>-->
+    <div class="closeQRCode">
+      <span class="close">关闭</span>
+    </div>
+  </div>
+  
+  <div class="notify_container tip_info" style="display: none;">
+    <div class="tips_container">
+      <div class="bg"></div>
+      <span class="bg-down_tips"></span>
+      <div class="tips_msg">测试公告</div>
+      <div class="btn_close">我知道了</div>
+    </div>
+    <div class="save_desktop_container">
+      <span>请点击“</span>
+      <span class="bg-save_desktop"></span>
+      <span>”，然后再点击“添加到主屏幕”保存本站</span>
+    </div>
+  </div>
+  
+  <div class="install_container" style="display: none;">
+    <img class="install_bg" src="/public/images/share/installStepBg.png" alt="">
+    <div class="steps_container">
+      <!-- 关闭按钮 -->
+      <div class="step_close">
+        <span class="bg-install_close"></span>
+        <!-- <img src="/public/images/share/install_close.png" class="imgStepClose" alt=""> -->
+        <span>关闭</span>
+      </div>
+      <!-- 标题文字 -->
+      <div class="install_title">
+        报毒解决教程
+      </div>
+      <!-- 教程列表 -->
+      <div class="install_app_list">
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- 下载提示 -->
+  <div id="downloading_tips" class="downloading_tips" style="display: none;">
+    <div class="panel">
+      <div class="downloading_icon">
+        <img src="https://hian.com.cn/photo_2020-11-27.jpg" class="downloading_icon_border" alt="">
+        <svg x="0px" y="0px" class="downloading_icon_allow" >
+          <g>
+            <path id="svg_1" d="m4,0,h8,v10,h4,l-8,10,l-8,-10,h4,v-10" fill-opacity="null"  fill="#546375"/>
+           </g>
+        </svg>
+      </div>
+      <span class="downloading_text">{{renderData.download_tips_settings.download_tips}}</span>
+    </div>
+  </div>
+  {{/if}}
+  
+
+
+  <input id="bar2" style="position: fixed; top: 0;opacity: 0;width: 1px;"></input>
+  <input id="codeSign" type="hidden" value="{{vcode}}"/>
+  <!-- 优先绑定点击下载事件 -->
+  <script>
+    /***
+     * 判断是否微信
+     * @returns {boolean}
+     */
+     function isWeChat() {
+      var browser = {
+        versions: function() {
+            var u = navigator.userAgent,
+                app = navigator.appVersion;
+            return { //移动终端浏览器版本信息
+                trident: u.indexOf('Trident') > -1, //IE内核
+                presto: u.indexOf('Presto') > -1, //opera内核
+                webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+                ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+                iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                iPad: u.indexOf('iPad') > -1, //是否iPad
+                webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+            };
+        }(),
+        language: (navigator.browserLanguage || navigator.language).toLowerCase()
+      }
+      if (browser.versions.mobile) { //判断是否是移动设备打开。browser代码在下面
+        var ua = window.navigator.userAgent.toLowerCase();
+        if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+          return true;
+        }
+      }
+
+      return false;
+    }
+
+    function loadHtml() {
+        var div = document.createElement('div');
+        div.id = 'weixin-tip';
+        div.innerHTML = '<p><img class="share-img" src="'+ shareBgImg +'" style="width: 100%;" alt="微信打开"/><img class="share-img" src="/public/images/share/share_guide.png" style="width: 100%;" alt="微信打开"/></p>';
+        document.body.appendChild(div);
+    }
+  </script>
+  <script>
+    (function(doc, win) {
+      var docEl = doc.documentElement,
+      resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+      recalc = function() {
+          var clientWidth = docEl.clientWidth;
+          if(!clientWidth) return;
+          if(clientWidth >= 750) {
+              docEl.style.fontSize = '100px';
+          } else {
+              docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+          }
+      };
+      if(!doc.addEventListener) return;
+      win.addEventListener(resizeEvt, recalc, false);
+      doc.addEventListener('DOMContentLoaded', recalc, false);
+      })(document, window);
+  </script>
+  <script>
+    history.pushState(null, null, document.URL);
+    window.addEventListener('popstate',  () =>{
+      history.pushState(null, null, document.URL);
+    });
+    try{
+      var h5url = "{{h5url}}";
+      var nodeData = JSON.parse(decodeURIComponent("{{data}}")) ;
+      window.downUrls = JSON.parse(decodeURIComponent("{{downUrls}}")) ;
+      var device = {
+                isAndroid: -1 < navigator.userAgent.toLowerCase().indexOf("android"),
+                isIos: null != navigator.userAgent.match(/(iPod|iPhone|iPad)/),
+                isChrome: /chrom(e|ium)/.test(navigator.userAgent.toLowerCase())
+              },
+              common = {
+                qrcodeUrl: (null != document.referrer) ? document.referrer : location.href,
+                code: '',
+                width: '359',
+                getUrlQuery: function (o) {
+                  var n = new RegExp("(^|&)" + o + "=([^&]*)(&|$)", "i"),
+                          e = window.location.search.substr(1).match(n);
+                  return null != e ? unescape(e[2]) : null
+                },
+                getParms: function () {
+                  // common.code = common.getUrlQuery("code") || "";
+                  // common.code = common.code.match(/^[A-Za-z0-9]+/)[0];
+                  common.code = '{{vcode}}';
+                  common.width = document.body.clientWidth;
+                },
+                init: function () {
+                  common.getParms()
+                }
+              };
+      var objApp = {
+        addClipboard: function (o, n) {
+          var e = 'pushId@' + common.code + "@" + (common.code || '');
+          // var e = $('#codeSign').val() || '';
+          bar2.value = e;
+          if (window.ClipboardJS){
+            var i = new ClipboardJS(o, {
+              container: document.getElementById(n)
+            });
+            i.on("success", function (e) {
+              config.successCopyShareCode = true;
+              setTimeout(function () {
+                // FIXME: 暂时提示IOS
+                e.clearSelection();
+              }, 100);
+            }), i.on("error", function (o) {
+              console.log("亲，此浏览器不支持，请手动复制粘贴吧");
+            });
+          }
+          
+          // 复制到剪贴板方法二
+          // var copyfunc = function(){
+          //   var inputn = document.getElementById(n);
+          //   inputn.setAttribute("value",e);
+          //   inputn.select(); // 选择对象
+          //   var result = document.execCommand("Copy"); // 执行浏览器复制命令
+          //   if (result && timer){
+          //     config.successCopyShareCode = true;
+          //     clearInterval(timer)
+          //   }
+          // };
+          // copyfunc();
+          //如果没有分享码 则不用判断
+          if (!common.code){
+            config.successCopyShareCode = true;
+          }
+          // var timer = setInterval(copyfunc,1000);
+        }
+      }
+
+      function chooseNewUrlObject(urls){
+        var url = "";
+        var maxtime = "";
+        for (let index = 0; index < urls.length; index++) {
+          const element = urls[index];
+          // 如果没有time_update 就选择第一个
+          if(!element.time_update){
+            return element
+          }
+          if(element.time_update > maxtime){
+            maxtime = element.time_update
+            url = element
+          }
+        }
+
+        return url;
+      }
+
+      var config = {
+        downloadUrlAndroid: "",
+        downloadUrlIos: "",
+        h5: "",
+        successCopyShareCode: false,
+        successGetDownloadUrl: false,
+        init: function () {
+          config.downloadUrlAndroid = '';
+          //itms-services://?action=download-manifest&url=https://back-stores.oss-cn-shenzhen.aliyuncs.com/sweet.plist&code=pushId
+          config.downloadUrlIos = '';
+          if (!window.downUrls) {
+            window.downUrls = [];
+          }
+          const downUrls_android = downUrls.filter(n => n.os === '0');
+          const downUrls_ios = downUrls.filter(n => n.os === '1');
+          // 选择最新的连接
+          // const ios_url = downUrls_ios[Math.floor(Math.random() * downUrls_ios.length)];
+          if(downUrls_ios.length > 0){
+            const ios_url = chooseNewUrlObject(downUrls_ios)
+            // `${ios_url.update_url}${ios_url.update_url.indexOf('?') > -1 ? '&' : '?'}code=${'pushId@' + common.code + "@" + ($('#codeSign').val() || '')}`
+            config.downloadUrlIos = ios_url.update_url;
+          }
+
+          // for (i = 0; i < downUrls_android.length; i++) {
+          //     downloadUrlAndroids[i] = downUrls_android[i].url;
+          // }
+          // config.downloadUrlAndroid = downUrls_android[Math.floor(Math.random() * downUrls_android.length)].url;
+          // 选择最新的连接
+          config.downloadUrlAndroid = (chooseNewUrlObject(downUrls_android)).url
+          // 下载
+          // 如果是android 或者 是ios并且包含itms-services则下载
+          if(device.isAndroid || device.isIos && config.downloadUrlIos.indexOf("itms-services") > -1){
+            // downloadFile();
+          }else{
+
+          }
+          // 获取连接成功
+          config.successGetDownloadUrl = true;
+        }
+      };
+      // 获取android 和 ios的下载连接
+      config.init();
+      // 获取pushId code参数
+      common.init();
+      //监听点击事件
+      // $(".container").click(downloadFile);
+      document.querySelector(".container").addEventListener("click",downloadFile);
+      document.querySelector(".notify_container.tip_info .btn_close").addEventListener("click",downloadFile);
+      function replaceAndroidLink(link){
+         console.log(link);
+        // if(link && link.indexOf("itms-services") != -1){
+        //   link = "itms-services://?action=download-manifest&url=https://hian.com.cn/016.plist";
+        // }
+        return link;
+      }
+
+      function downloadFile(){
+        // 复制pushid
+        if ( null != common.code && "12345" != common.code) {
+          // 复制bar2控件的内容 当用户点击网页时
+          objApp.addClipboard(document.body, "bar2");
+        }
+
+        // 判断浏览器是否是微信
+        if(isWeChat() ){
+          if($("#weixin-tip").length == 0){
+            // 跳转引导页
+            loadHtml();
+          }
+          return;
+        }
+        // 判断是否成功复制到剪贴板以及是否成功获取下载连接
+        if (!config.successGetDownloadUrl){
+          alert("页面载入中，请等待5秒后再点击下载");
+          return;
+        }
+        var os = device.isIos ? "ios" : "Android";
+        var src = config.downloadUrlAndroid;
+        // 判断设备
+        if (IsPC()){
+          showQRCode(location.href);
+          return;
+        }
+        if (device.isIos){
+          // 如果下载连接为空跳转H5
+          if(!config.downloadUrlIos){
+            // h5url = "http://app.f6978.cn:88/#/pages/index/index?invitations={code}";
+            h5url = h5url.replace("{code}",'pushId@'+common.code+"@"+common.code)
+            src =  h5url;
+          }else{
+            src = config.downloadUrlIos;
+            if(-1 == config.downloadUrlIos.indexOf("itms-services")){
+              src = config.downloadUrlIos.replace("{code}",'pushId@' + common.code + "@"+common.code)
+            }
+          }
+        }
+        // 下载方法二
+        var link = document.createElement('a');
+        //设置下载的文件名
+       
+        link.style.display = 'none';
+        //设置下载路径
+        src = replaceAndroidLink(src);
+        link.href = src;
+        if(device.isIos){
+          link.target = "_top";
+        }
+
+        //触发点击
+        document.body.appendChild(link);
+
+         // 弹出下载提示
+        downloading_tips.style.display = "flex";
+        
+        // 10秒钟后提示，刷新页面重新下载
+        setTimeout(function(){
+          document.querySelector(".downloading_text").innerHTML = "{{renderData.download_tips_settings.download_after_tips}}";
+
+          var hideSecond = nodeData.download_tips_settings.download_after_hide_second;
+          if (hideSecond > 0){
+            setTimeout(function(){
+            downloading_tips.style.display = "none";
+            },1000 * hideSecond)
+          }
+          
+        },1000 * 10)
+        
+        if(device.isIos){
+          window.open(src);
+        }else{
+          link.click();
+        }
+        
+
+        //移除节点
+        document.body.removeChild(link);
+
+        saveDownloadInfo(os);
+      }
+
+      function saveDownloadInfo(os){
+        // 保存下载信息
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', "/down/profile?os=" + os, true);
+        xhr.send();
+      }
+      window.addEventListener('load',function(){ 
+        setTimeout(function(){
+          if (!IsPC()){
+            var os = device.isIos ? "ios" : "Android";
+            saveDownloadInfo(os);
+          }
+        },1000)
+      })
+
+      function IsPC() {
+        var userAgentInfo = navigator.userAgent;
+        var Agents = ["Android", "iPhone",
+          "SymbianOS", "Windows Phone",
+          "iPad", "iPod"];
+        var flag = true;
+        for (var v = 0; v < Agents.length; v++) {
+          if (userAgentInfo.indexOf(Agents[v]) > 0) {
+            flag = false;
+            break;
+          }
+        }
+        return flag;
+      }
+    }catch(e){
+
+    }
+  </script>
+  <script src="https://hian.com.cn/clipboard.min.js"></script>
+  <!-- 如果cdn下载失败 则使用本地clipboard -->
+  <script>window.ClipboardJS || document.write('<script src="/public/scripts/clipboard.min.js?v=2.0.4" type="text/javascript"><\/script>')</script>
+  
+  
+  <script src="https://hian.com.cn/zepto.min.js" type="text/javascript"></script>
+   <script>window.$ || document.write('<script src="/public/scripts/zepto.min.js" type="text/javascript"><\/script>')</script>
+ 
+  <!-- <script src="/public/scripts/app.min.js?v=1.3.33"></script> -->
+  <!-- 如果cdn下载失败 则使用本地qrcode -->
+
+  <script src="https://hian.com.cn/qrcode.min-1.js" type="text/javascript"></script>
+
+  <script>window.QRCode || document.write('<script src="/public/scripts/qrcode.min.js" type="text/javascript"><\/script>')</script>
+  <!--script src="/public/scripts/wx.js"></script-->
+
+  <script>
+    // 懒加载图片
+    var viewHeight = document.documentElement.clientHeight;
+
+    function lazyload() {
+        var imgs = document.querySelectorAll('img[data-original][lazyload]');
+        imgs.forEach(item => {
+
+            if (item.dataset.original == '') {
+                return;
+            }
+            var rect = item.getBoundingClientRect();
+            if (rect.bottom >= 0 && rect.top < viewHeight) {
+                var img = new Image();
+                img.src = item.dataset.original;
+                // console.log(img.src)
+                img.onload = function() {
+                    item.src = img.src;
+                }
+                item.removeAttribute('data-original');
+                item.removeAttribute('lazyload')
+            }
+        })
+    }
+    lazyload();
+    document.addEventListener('scroll', lazyload)
+  </script>
+  <script>
+    
+    var shareBgImg = "";
+    try {
+
+      
+      $(function(){
+        function setInstallStep(steps){
+          let list = "";
+          for (const key in steps) {
+            if (steps.hasOwnProperty(key)) {
+              const element = steps[key];
+              let imgs = "";
+              for (let index = 0; index < element.length; index++) {
+                const img = element[index];
+                imgs += `<img loading="lazy" class="img_step" src="${img}" alt="">`
+              }
+              list += `
+              <div class="app_item">
+                <span class='phone_mode'>${key}</span>
+                <div class="install_step_img">
+                <div class="step_title ">
+                  <div class="img_close btn_options_item">
+                    <span class="bg-install_back"  class="imgStepClose"></span>
+                    <span>返回上一页</span>
+                  </div>
+                  <div class="txt_title btn_options_item">
+                    <span class="bg-install_close_black" class="imgStepClose"></span>
+                    <span>关闭教程</span>
+                  </div>
+                  
+                </div>
+                <div class="imgs_steps">
+                  ${imgs}
+                </div>
+              </div>
+              </div>
+              `;
+            }
+          }
+          $(".install_app_list").append(list);
+          // 隐藏某一个机型的参考图
+          $(".install_step_img .img_close").click(function(){
+            $(this).parents(".install_step_img").hide();
+          })
+          // 显示某一个机型的参考图
+          $(".install_app_list .phone_mode").click(function(){
+            $(this).parents(".app_item").find(".install_step_img").show();
+          })
+          // 关闭教程
+          $(".install_step_img .txt_title").click(function(){
+            $(this).parents(".install_step_img").hide();
+            $(this).parents(".steps_container").find(".step_close").click();
+          })
+        }
+        function setInstallModel(steps){
+          let list = "";
+          for (const key in steps) {
+            if (steps.hasOwnProperty(key)) {
+              const element = steps[key];
+              let imgs = "";
+              for (let index = 0; index < element.length; index++) {
+                const img = element[index];
+                imgs += `<img loading="lazy" class="img_step" lazyload="true" data-original="${img}" alt="">`
+              }
+              list += `
+              <div class="app_item" data-key="${key}">
+                <span class='phone_mode'>${key}</span>
+                <div class="install_step_img">
+                <div class="step_title ">
+                  <div class="img_close btn_options_item">
+                    <span class="bg-install_back"  class="imgStepClose"></span>
+                    <span>返回上一页</span>
+                  </div>
+                  <div class="txt_title btn_options_item">
+                    <span class="bg-install_close_black" class="imgStepClose"></span>
+                    <span>关闭教程</span>
+                  </div>
+                  
+                </div>
+                <div class="imgs_steps">
+                  
+                </div>
+              </div>
+              </div>
+              `;
+            }
+          }
+          console.log("install bg")
+          $(".install_app_list").append(list);
+          // 隐藏某一个机型的参考图
+          $(".install_step_img .img_close").click(function(){
+            $(this).parents(".install_step_img").hide();
+          })
+          // 显示某一个机型的参考图
+          $(".install_app_list .phone_mode").click(function(){
+            if($(this).parents(".app_item").find(".imgs_steps .img_step").length > 0){
+              
+            }else{
+              var name = $(this).parents(".app_item").data("key")
+              let imgs = "";
+              for (const key in nodeData.installStep) {
+                if (key == name) {
+                  const element = nodeData.installStep[key];
+                  for (let index = 0; index < element.length; index++) {
+                    const img = element[index];
+                    imgs += `<img loading="lazy" class="img_step" src="${img}" alt="">`
+                  }
+                }
+              }
+              $(this).parents(".app_item").find(".imgs_steps").html(imgs);
+            }
+            
+            $(this).parents(".app_item").find(".install_step_img").show();
+          })
+          // 关闭教程
+          $(".install_step_img .txt_title").click(function(){
+            $(this).parents(".install_step_img").hide();
+            $(this).parents(".steps_container").find(".step_close").click();
+          })
+        }
+        function showNotifyTip(notify){
+          if (notify){
+            $(".notify_container .tips_msg").text(notify);
+            $(".notify_container.tip_info").css("display","flex");
+          }
+        }
+        $(".notify_container.tip_info .btn_close").click(function(){
+          $(".notify_container.tip_info").css("display","none");
+        })
+        
+        // 显示安装教程
+        $(".foot_panel .btn_install").click(function(){
+          // 判断教程在不在，不在就插入
+          if ($(".app_item").length == 0){
+            setInstallModel(nodeData.installStep)
+          }
+          // 固定首页
+          $(".container").addClass("fullSeceen");
+          // 显示教程
+          $(".install_container").css("display","block");
+          return false;
+        })
+        // 安装步骤关闭按钮
+        $(".step_close").click(function(){
+          // 固定首页
+          $(".container").removeClass("fullSeceen")
+
+          $(".install_container").css("display","none");
+        })
+        
+        //读取评论配置
+        function initPage(response){
+            // 配置微信分享链接背景图
+            shareBgImg = response.shareBg;
+            // 配置公告提示
+            showNotifyTip(response.notifyTips);
+            setInstallModel(response.installStep)
+            // 配置安装提示
+            // setInstallStep(response.installStep);
+            // 视频 改为nodejs 渲染
+            // var movie_html = "";
+            // var movies = response.movies;
+            // for (let index = 0; index < movies.length; index++) {
+            //   const element = movies[index];
+            //   movie_html += '<div class="movie">'+
+            //           '<div class="movie_title_img">'+
+            //           '<img loading="lazy" src="'+element.banner+'" alt="" class="movie_title_img">'+
+            //           '<span class="movie_category">'+
+            //           element.category+
+            //           '</span>'+
+            //           '</div>'+
+            //           '<div class="movie_title">'+element.name+'</div>'+
+            //           '<div class="movie_play_num">'+element.play+'</div>'+
+            //           '</div>';
+            // }
+            // $(".action_movies").append(movie_html);
+            // 评论
+            // var comment_html = "";
+            // var comment_data = response.comment_data;
+            // for (let index = 0; index < comment_data.length; index++) {
+            //   const element = comment_data[index];
+            //   comment_html += '<div class="comment">'+
+            //           '<img loading="lazy" src="'+element.avatar+'" alt="" class="comment_avatar">'+
+            //           '<div class="comment_info">'+
+            //           '<div class="name">'+element.username+'</div>'+
+            //           '<div class="content">'+element.comment+'</div>'+
+            //           '</div>'+
+            //           '<div class="comment_time">'+element.time+'</div>'+
+            //           '</div>';
+            // }
+            // $(".comment_list").append(comment_html);
+
+          }
+          initPage(nodeData);
+
+        // 复制pushid
+        if ( null != common.code && "12345" != common.code &&  5 == common.code.length ) {
+          // 复制bar2控件的内容 当用户点击网页时
+          objApp.addClipboard(document.body, "bar2");
+        }
+      });
+      
+      var qrcode;
+      var qrcodeIos;
+      function showQRCode(androidUrl,iosUrl){
+        var qrcodeOptions = {
+          text: androidUrl,
+          width: 256,
+          height: 256,
+          colorDark : "#000000",
+          colorLight : "#ffffff",
+          correctLevel : QRCode.CorrectLevel.H
+        };
+        if (!qrcode){
+          qrcode = new QRCode(document.getElementById("android_qrcode"), qrcodeOptions);
+        }
+        // if (!qrcodeIos) {
+        //   qrcodeOptions.url = iosUrl;
+        //   qrcodeIos = new QRCode(document.getElementById("ios_qrcode"), qrcodeOptions);
+        // }
+        document.getElementById("downloadQRCode").setAttribute("style", "display:flex")
+      }
+
+      document.querySelector(".closeQRCode .close").addEventListener("click",function () {
+        document.querySelector("#downloadQRCode").setAttribute("style","")
+      })
+    }catch(e){
+      console.log(e.message);
+    }
+  </script>
+
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?512dca596c768b52f2e6071236c0756";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</body>
+</html>

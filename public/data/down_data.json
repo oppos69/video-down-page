@@ -1,0 +1,9 @@
+{
+    "title":[
+        "标题1",
+        "大标题1",
+        "副标题1"
+    ],
+    "androidUrl":"https://www.baidu.com?code={code}",
+    "iosUrl":"https://www.so.com?code={code}"
+}

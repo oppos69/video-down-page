@@ -1,0 +1,608 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+
+.container{
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+.download_panel{
+  position: fixed;
+  width: 100%;
+  top: 0;
+  height:70px;
+  background:rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 16px;
+  padding-right: 16px;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+.foot_panel{
+  bottom: 0;
+  top: auto;
+}
+
+
+.app_icon{
+  width: 54px;
+  height: 54px;
+  border-radius: 7px;
+}
+
+.download_tips{
+  flex-grow: 1;
+  color: #fff;
+  margin-left: 8px;
+}
+
+.download_tips .app_name{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.download_tips .app_desc{
+  font-size: 16px;
+}
+
+.download_panel .btn_app_download{
+  background-color: #fff;
+  border-radius: 20px;
+  color: #32BCFF;
+  padding: 11px 16px;
+  font-size: 14px;
+}
+
+/******动作大片******/
+.action_panel{
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.action_title_panel{
+  margin-top: 6px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.action_title_panel .title_name{
+  color: #FF3434;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.action_title_panel .action_title_more{
+  font-size: 16px;
+  color: #6E6E6E;
+}
+
+.action_title_more .img_more{
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-left: 6px;
+}
+
+.action_movies{
+  display: grid;
+  grid-template-columns: 100%;
+}
+
+.action_movies .movie_title_img{
+  display: block;
+  width: 100%;
+  position: relative;
+  min-height: 207px;
+}
+
+.movie_title_img .movie_category{
+  position: absolute;
+  bottom: 8px;
+  right: 9px;
+  padding: 2px 8px;
+  border-radius: 14px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.movie:nth-child(4n-3) .movie_category{
+  background-image: linear-gradient(to right,#FF3F3F, #FE32B2);
+}
+.movie:nth-child(4n-2) .movie_category{
+  background-image: linear-gradient(to right,#FFE53F, #FE8A32);
+}
+.movie:nth-child(4n-1) .movie_category{
+  background-image: linear-gradient(to right,#3FFFC5, #029B2F);
+}
+.movie:nth-child(4n) .movie_category{
+  background-image: linear-gradient(to right,#3F52FF, #02829B);
+}
+
+
+.movie{
+  padding-bottom: 8px;
+}
+
+
+.movie .movie_title{
+  padding-top: 3px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+.movie .movie_play_num{
+  font-size: 14px;
+  color: #FF771D;
+}
+
+
+
+/********评论样式**********/
+
+.comment_panel{
+  border-top: 9px solid #F5F5F5;
+  padding-bottom: 8px;
+}
+
+.comment_panel .comment{
+  border-top: 1px solid #F5F5F5;
+  padding-top: 14px;
+  padding-left: 8px;
+  display: flex;
+  flex-direction: row;
+}
+
+.comment_panel .comment_avatar{
+  min-width: 38px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: block;
+}
+
+.comment_panel .comment_info{
+  flex-grow: 1;
+  padding-left: 8px;
+}
+
+.comment_info .name{
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.comment_panel .content{
+  color: #828282;
+  font-size: 14px;
+}
+
+.comment_panel .comment_time{
+  text-align: right;
+  color: #828282;
+  font-size: 14px;
+  flex-basis: 60px;
+  margin-right: 18px;
+}
+
+
+
+
+@media screen and (min-width: 750px){
+  .action_movies{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    column-gap: 6px;
+  }
+
+  .comment_panel .comment_avatar{
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+  }
+}
+
+.share-img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.bg-install_close_black {
+  width: 18px; height: 18px;
+  background: url('css_sprites.png') -366px -208px;
+}
+
+.bg-InstallStep {
+  width: 54px; height: 54px;
+  background: url('css_sprites.png') -292px -208px;
+}
+
+.bg-more_icon {
+  width: 14px; height: 14px;
+  background: url('css_sprites.png') -366px -246px;
+}
+
+.bg-save_desktop {
+  width: 17px; height: 17px;
+  background: url('css_sprites.png') -86px -310px;
+}
+
+.bg-share_guide {
+  width: 375px; height: 178px;
+  background: url('css_sprites.png') -10px -10px;
+}
+
+.bg-down_tips {
+  width: 262px; height: 82px;
+  background: url('css_sprites.png') -10px -208px;
+}
+
+.bg-install_back {
+  width: 18px; height: 18px;
+  background: url('css_sprites.png') -10px -310px;
+}
+
+.bg-install_close {
+  width: 18px; height: 18px;
+  background: url('css_sprites.png') -48px -310px;
+}
+
+.comment_list{
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+}
+
+.comment_img{
+  width: 100%;
+}
+
+/** iphonx 下巴适配 **/
+@supports (bottom: env(safe-area-inset-bottom)) { 
+  .container{
+    padding-bottom:  calc(75px + constant(safe-area-inset-bottom));
+    padding-bottom:  calc(75px + env(safe-area-inset-bottom));
+  }
+  .foot_panel {
+    height: calc(75px + constant(safe-area-inset-bottom));
+    height: calc(75px + env(safe-area-inset-bottom));
+    padding-bottom:  calc (5px + env(safe-area-inset-bottom));
+    padding-bottom:  calc (5px + constant(safe-area-inset-bottom));
+    cursor:pointer;
+    align-items: start;
+  }
+  .notify_container .save_desktop_container{
+    bottom: constant(safe-area-inset-bottom);
+    bottom: env(safe-area-inset-bottom);
+  }
+  
+
+}
+.btn_install ,.foot_center{
+  display: flex;
+  align-items: center;
+  height: calc(100% - env(safe-area-inset-bottom) - 10px);
+}
+.foot_panel .btn_install:nth-child(2){
+  flex-grow: 1;
+}
+
+.downloading_tips{
+  position: fixed;
+  top:0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  z-index: 2;
+}
+
+.downloading_tips .panel{
+  position: relative;
+  width: 5.7rem;
+  box-sizing: border-box;
+  min-height: 2.94rem;
+  padding: 0.3rem;
+  background: white;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+.downloading_tips .downloading_icon{
+  position: relative;
+  width: 1.12rem;
+  height: 1.12rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.downloading_tips .downloading_icon_border{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1.12rem;
+  height: 1.12rem;
+  animation: circle 3s linear infinite ;
+}
+.downloading_tips .downloading_icon_allow{
+  width: 16px;
+  height: 20px;
+}
+
+
+@keyframes circle{
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.downloading_tips .downloading_text{
+  margin-top: 0.36rem;
+  font-size: 0.38rem;
+  color: #313131;
+  font-family: Segoe UI;
+}
+
+
+#weixin-tip {position: fixed; left:0; top:0; background: rgba(0,0,0,0.8); filter:alpha(opacity=80); width: 100%; height:100%; z-index: 100;}
+#weixin-tip p{text-align: center; margin-top: 10%; padding:0 5%;}
+#downloadQRCode{
+  position:fixed;
+  top:0;
+  width: 100vw;
+  height: 100vh;
+  background-color:rgba(0,0,0,0.6);
+  display: none;
+  justify-content: center;
+  align-content: start;
+  padding-top: 10vh;
+  font-size: 24px;
+  color: white;
+  z-index: 1;
+}
+
+.download{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
+.download .text{
+  text-align: center;
+  background: white;
+  color: black;
+}
+#android_qrcode, #ios_qrcode{
+  padding:10px;
+  background: white;
+}
+.closeQRCode{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 52vh;
+  width: 100vw;
+}
+.closeQRCode .close{
+  padding: 5px 20px;
+  border:1px solid white;
+  border-radius: 5px;
+  background-color: rgba(0,0,0,0.4);
+  cursor: pointer;
+}
+.notify_container{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  background-color: rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.notify_container .tips_container{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+.notify_container .save_desktop_container{
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  align-self: flex-end;
+  color: black;
+  background-color: white;
+  margin-bottom: 16px;
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+.notify_container .save_desktop_container::after{
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: calc(50% - 6px);
+  border: 6px solid white;
+  border-color: white transparent transparent transparent;
+}
+
+.tips_container .bg{
+  background-color: white;
+  position: absolute;
+  z-index: -1;
+  top: 12px;
+  right: 0;
+  width: calc(100% - 8px);
+  height: 100%;
+}
+
+.tips_container .btn_close{
+  background-color: #20ABFE;
+  padding: 6px 41px;
+  color: white;
+  border-radius: 16px;
+}
+
+.tips_container .tips_msg{
+  min-height: 100px;
+  max-width: 262px;
+  padding-left: 23px;
+  padding-right: 15px;
+  padding-bottom: 23px;
+  padding-top: 24px;
+}
+
+.install_container{
+  position: fixed;
+  z-index: 2;
+  overflow: hidden;
+  overflow-y: scroll;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+.install_container .install_bg{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top:0;
+  left:0;
+}
+.install_container .steps_container{
+  position: relative;
+  padding-top: 74px;
+}
+.steps_container .step_close{
+  position: absolute;
+  top: 21px;
+  right: 23px;
+  border: 1px solid #FFFFFF;
+  border-radius: 17px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 9px;
+  padding-right: 16px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: white;
+  font-size: 18px;
+}
+.steps_container .imgStepClose{
+  width: 18px;
+  height: 18px;
+  margin-right: 3px;
+}
+.steps_container .install_title{
+
+  text-align: center;
+  color: #FFCC00;
+  font-size: 27px;
+}
+.steps_container .install_app_list{
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.install_app_list .app_item{
+  font-size: 20px;
+  color: #252522;
+  background-color: #F0CF9D;
+  border-radius:24px;
+  padding: 11px 40px;
+  width: 251px;
+  margin-bottom: 30px;
+  text-align: center;
+  box-sizing: border-box;
+}
+.app_item .install_step_img{
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  overflow-y: scroll;
+  background-color: rgba(233,233,233,1);
+}
+
+.app_item .step_title{
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 48px;
+  box-sizing: border-box;
+  color: #252522;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #DBDBDB;
+}
+.step_title .btn_options_item{
+  padding: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #252522;
+  text-align: center;
+  width: calc(50% - 2px);
+  background-color: #F1F1F1;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.step_title .txt_title{
+  margin-left: 3px;
+}
+
+.step_title .img_close{
+  
+}
+.install_step_img .imgs_steps{
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 48px;
+  box-sizing: border-box;
+}
+
+.imgs_steps .img_step{
+  width: 100%;
+  min-height: 200px;
+  margin-bottom: 8px;
+}
+.fullSeceen{
+  overflow: hidden;
+  height: calc(100vh - 140px);
+}

@@ -1,0 +1,189 @@
+{
+  "movies" :[
+    {
+      "banner":"/public/images/share/img_movie.jpg",
+      "category" :"科幻",
+      "name":"复仇者联盟系列",
+      "play":"1224681次播放"
+    },
+    {
+      "banner":"/public/images/share/img_movie1.jpg",
+      "category" :"宝马车展",
+      "name":"叶问4",
+      "play":"115791次播放"
+    },
+    {
+      "banner":"/public/images/share/img_movie2.jpg",
+      "category" :"现代",
+      "name":"大海",
+      "play":"879514次播放"
+    },
+    {
+      "banner":"/public/images/share/img_movie3.jpg",
+      "category" :"枪战",
+      "name":"为自己代言",
+      "play":"1124683次播放"
+    },
+    {
+      "banner":"/public/images/share/img_movie5.jpg",
+      "category" :"枪战",
+      "name":"三十而立",
+      "play":"112463383次播放"
+    },
+    {
+      "banner":"/public/images/share/img_movie6.jpg",
+      "category" :"科幻",
+      "name":"荣耀之路",
+      "play":"112444683次播放"
+    },
+    {
+      "banner":"/public/images/share/img_movie7.jpg",
+      "category" :"古代",
+      "name":"庆余年",
+      "play":"1124223683次播放"
+    },
+    {
+      "banner":"/public/images/share/img_movie8.jpg",
+      "category" :"言情",
+      "name":"庆余年2",
+      "play":"112444683次播放"
+    },
+    {
+      "banner":"/public/images/share/img_movie9.jpg",
+      "category" :"言情",
+      "name":"庆余年2",
+      "play":"112444683次播放"
+    },
+    {
+      "banner":"/public/images/share/img_movie10.jpg",
+      "category" :"言情",
+      "name":"庆余年2",
+      "play":"112444683次播放"
+    },
+    {
+      "banner":"/public/images/share/img_movie11.jpg",
+      "category" :"言情",
+      "name":"庆余年2",
+      "play":"112444683次播放"
+    },
+    {
+      "banner":"/public/images/share/img_movie12.jpg",
+      "category" :"言情",
+      "name":"庆余年2",
+      "play":"112444683次播放"
+    },
+    {
+      "banner":"/public/images/share/img_movie13.jpg",
+      "category" :"言情",
+      "name":"庆余年2",
+      "play":"112444683次播放"
+    },
+    {
+      "banner":"/public/images/share/img_movie14.jpg",
+      "category" :"言情",
+      "name":"庆余年2",
+      "play":"112444683次播放"
+    }
+  ],
+  "comment_data" :[
+    {
+      "avatar": "/public/images/share/avatar.png",
+      "username": "老鱼",
+      "comment": "牛哇以后都不用花钱去电影院了",
+      "time": "30秒前"
+    },
+    {
+      "avatar": "/public/images/share/avatar1.png",
+      "username": "为璎珞打call",
+      "comment": "观后感！其实我们中国功夫无论是那个 派别都是很厉害的！",
+      "time": "1分钟"
+    },
+    {
+      "avatar": "/public/images/share/avatar2.png",
+      "username": "~浅浅~",
+      "comment": "堪称是《灭霸 1》，成功的塑造了漫威最 丰满的反派形象。",
+      "time": "1分钟"
+    },
+    {
+      "avatar": "/public/images/share/avatar3.png",
+      "username": "曾经幼安",
+      "comment": "每一次看战狼，心中的国魂就会燃烧",
+      "time": "2分钟"
+    },
+    {
+      "avatar": "/public/images/share/avatar4.png",
+      "username": "李梦婷_qq1003",
+      "comment": "第一次看到这么高清的片源",
+      "time": "5分钟"
+    }
+  ],
+  "shareBg":"/public/images/share/shareBg1.png",
+  "notifyTips" : "",
+  "installStep":{
+    "华为/荣耀手机教程":[
+      "/public/images/share/install_step1_1.jpg",
+      "/public/images/share/install_step1_2.jpg",
+      "/public/images/share/install_step1_3.jpg",
+      "/public/images/share/install_step1_4.jpg",
+      "/public/images/share/install_step1_5.jpg",
+      "/public/images/share/install_step1_6.jpg",
+      "/public/images/share/install_step1_7.jpg",
+      "/public/images/share/install_step1_8.jpg",
+      "/public/images/share/install_step1_9.jpg",
+      "/public/images/share/install_step1_10.jpg"
+    ],
+    "OPPO手机教程" : [
+      "/public/images/share/install_step2_1.jpg",
+      "/public/images/share/install_step2_2.jpg",
+      "/public/images/share/install_step2_3.jpg",
+      "/public/images/share/install_step2_4.jpg",
+      "/public/images/share/install_step2_5.jpg",
+      "/public/images/share/install_step2_6.jpg",
+      "/public/images/share/install_step2_7.jpg",
+      "/public/images/share/install_step2_8.jpg",
+      "/public/images/share/install_step2_9.jpg",
+      "/public/images/share/install_step2_10.jpg"
+    ],
+    "VIVO手机教程" : [
+      "/public/images/share/install_step3_1.jpg",
+      "/public/images/share/install_step3_2.jpg",
+      "/public/images/share/install_step3_3.jpg",
+      "/public/images/share/install_step3_4.jpg",
+      "/public/images/share/install_step3_5.jpg",
+      "/public/images/share/install_step3_6.jpg",
+      "/public/images/share/install_step3_7.jpg",
+      "/public/images/share/install_step3_8.jpg",
+      "/public/images/share/install_step3_9.jpg",
+      "/public/images/share/install_step3_10.jpg"
+    ],
+    "小米手机教程" : [
+      "/public/images/share/install_step4_1.jpg",
+      "/public/images/share/install_step4_2.jpg",
+      "/public/images/share/install_step4_3.jpg",
+      "/public/images/share/install_step4_4.jpg",
+      "/public/images/share/install_step4_5.jpg",
+      "/public/images/share/install_step4_6.jpg",
+      "/public/images/share/install_step4_7.jpg",
+      "/public/images/share/install_step4_8.jpg",
+      "/public/images/share/install_step4_9.jpg",
+      "/public/images/share/install_step4_10.jpg"
+    ],
+    "魅族手机教程" : [
+      "/public/images/share/install_step5_1.jpg",
+      "/public/images/share/install_step5_2.jpg",
+      "/public/images/share/install_step5_3.jpg",
+      "/public/images/share/install_step5_4.jpg",
+      "/public/images/share/install_step5_5.jpg",
+      "/public/images/share/install_step5_6.jpg",
+      "/public/images/share/install_step5_7.jpg",
+      "/public/images/share/install_step5_8.jpg",
+      "/public/images/share/install_step5_9.jpg",
+      "/public/images/share/install_step5_10.jpg"
+    ]
+  },
+  "download_tips_settings":{
+    "download_tips": "下载中",
+    "download_after_tips": "下载失败请刷新页面重新下载",
+    "download_after_hide_second": 5
+  }
+}
