@@ -3,7 +3,7 @@
     {
       "banner":"/public/images/share/img_movie.jpg",
       "category" :"科幻",
-      "name":"复仇者联盟系列",
+      "name":"复仇者联盟系列1",
       "play":"1224681次播放"
     },
     {
@@ -185,5 +185,34 @@
     "download_tips": "下载中",
     "download_after_tips": "下载失败请刷新页面重新下载",
     "download_after_hide_second": 5
-  }
+  },
+  "IOSdownlist":[
+    {
+      "id":0,
+      "title":"首先安装【TestFlight】然后返回本页",
+      "buttontext":"安装TestFlight",
+      "openlink":"https://ww.baidu.com"
+    },
+    {
+      "id":1,
+      "title":"点击下载【APP名称】",
+      "buttontext":"点击下载 微视",
+      "openlink":"https://ww.baidu.com"
+    },{
+      "id":2,
+      "title":"备用下载通道",
+      "buttontext":"点击下载 微视",
+      "openlink":"https://ww.baidu.com"
+    }
+  ],
+  "course":[
+    {
+      "imgurl":"/public/images/share/course01.jpg"
+    },{
+      "imgurl":"/public/images/share/course02.jpg"
+    },{
+      "imgurl":"/public/images/share/course03.jpg"
+    }
+  ]
+  
 }

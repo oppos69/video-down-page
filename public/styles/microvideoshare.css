@@ -1,0 +1,583 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+
+.container{  
+  width: 100%;
+  height: auto;
+}
+
+
+/* 安卓版页面 */
+
+.android_box{
+  position:relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.imgbox_bg{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: url(/public/images/share/microvideo_androidbg.jpg) no-repeat;
+  background-size:100% auto;
+
+}
+
+.imgbox_bg .img{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.and_bottom{
+  position: relative;
+  z-index: 111;
+  width: 100%;
+  height: 442px;
+  box-sizing: border-box;
+  padding-top: 47px;
+  font-size: 17px;
+}
+
+.and_bottom .and_tip{
+  width: 272px;
+  text-align: center;
+  color: #EFFF00;
+  font-size: 17px;
+  margin: 0 auto;
+  line-height: 20px;
+}
+
+.and_bottom .and_button{
+  width: 318px;
+  padding:10px 0;
+  font-size: 21px;
+  color: #fff;
+  background-color: #0090FF;
+  text-align: center; 
+  border-radius: 29px;
+  margin: 98px auto 52px;
+}
+
+.and_bottom .save_tip{
+  font-size: 17px;
+  color: #fff; 
+  text-align: center;
+}
+.save_tip div{
+  text-decoration: underline;
+}
+.save_tip .red{
+  color: #FF4949;
+  text-decoration: underline;
+}
+
+
+/* IOS版页面 */
+
+.IOS_box{
+  position:relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.imgbox_bg{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: url(/public/images/share/microvideo_androidbg.jpg) no-repeat;
+  background-size:100% auto; 
+}
+
+.IOS_bottom{
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 442px;
+  box-sizing: border-box;
+  padding-top: 47px;
+  font-size: 17px;
+}
+
+.IOS_bottom .and_tip{
+  width: 272px;
+  text-align: center;
+  color: #EFFF00;
+  font-size: 17px;
+  margin: 0 auto 35px;
+  line-height: 20px;
+}
+
+.IOS_bottom .ios_button{
+  position: relative;
+  width: 318px;
+  padding:4px 0;
+  font-size: 21px;
+  color: #fff;
+  background-color: #0090FF;
+  text-align: center; 
+  border-radius: 29px; 
+  margin: 0 auto 30px;
+}
+
+.IOS_bottom .icon{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: 80px;
+  margin-top: -10px;
+  width: 36px;
+  height: 22px;
+}
+
+.IOS_bottom .small{
+  font-size: 12px;
+}
+
+.ios_tip{
+  position: absolute;
+  left: 50%;
+  bottom: 5px;
+  margin-left: -166px;
+  width: 333px;
+  height: 45px;
+}
+
+.ios_tip .icon{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* IOS 流畅版下载页 */
+.IOSfluent{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  background: #443030;
+  display: none;
+}
+
+.logotip{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+  color: #fff;
+  padding: 30px 0 7px;
+}
+
+.logotip .logoicon{
+  width: 90px;
+  height: 90px;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-bottom: 14px;
+}
+
+.IOSfluent .list{
+  width: 100%;
+  height: auto;
+  padding: 0 18px;
+  overflow: hidden;
+  font-size: 18px;
+  box-sizing: border-box;
+}
+.IOSfluent .list .listli{
+  width: 100%;
+  height: auto; 
+  margin-bottom: 20px; 
+}
+
+.IOSfluent .list .box{
+  width: 100%;
+  height: auto;
+  padding: 25px 31px; 
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.IOSfluent .list .tip01{
+  font-size: 17px;
+}
+
+.IOSfluent .list .tip02{
+  font-size: 12px;
+  color: #FF0000;
+  margin-top: 24px;
+}
+
+.IOSfluent .list .tip03{
+  font-size: 12px;
+  color: #000; 
+  margin-bottom: 29px;
+}
+
+.IOSfluent .list .title{
+  font-size: 18px;
+  color: #000;
+  font-weight: bold;
+}
+
+.IOSfluent .list .top{
+  font-size: 21px;
+  font-weight: bold;
+  color: #fff;
+  padding: 5px 0;
+}
+
+.IOSfluent .list .button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 276px;
+  height: auto;
+  padding: 8px 0;
+  border-radius: 22px;
+  border: 1px solid #EC9E00;
+  margin: 14px auto 0;
+  font-weight: bold;
+}
+
+.IOSfluent .list .icon{
+  width: 31px;
+  height: 31px;
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: #737373;
+  margin-right: 15px;
+}
+
+.downCourse{
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 5;
+  width: 100%;
+  height: auto;
+  min-height: 100vh; 
+  background-color: #fff;
+  padding: 30px 45px;
+  box-sizing: border-box;
+  display: none;
+
+}
+
+.downCourse .backbg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.downCourse .img{
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  z-index: 1;
+}
+ 
+.downCourse .downbutton{
+  position: relative;
+  width: 318px;
+  height: auto;
+  font-size: 21px;
+  padding: 10px 0;
+  border-radius: 29px;
+  margin: 30px auto 0;
+  text-align: center;
+  background-color: #fff;
+
+  z-index: 1;
+}
+
+/* 轻量版安装教程 */
+.lightweight{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  background-color: #fff;
+  z-index: 5;
+  display: none;
+}
+
+.lightweight .toptitle{
+  width: 100%;
+  height: auto;
+  padding: 11px 0;
+  box-shadow: 0px -3px 6px rgba(111, 109, 97, 0.55);
+  font-size: 19px;
+  font-weight: bold;
+  color: #000;
+  text-align: center;
+}
+
+.lightBox{
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  padding: 21px 23px;
+  box-sizing: border-box;
+}
+.lightBox .downbutton{
+  width: 318px;
+  height: auto;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 21px;
+  color: #fff;
+  border-radius: 29px;
+  background-color: #0090FF;
+  margin: 0 auto 23px;
+}
+.lightBox .img{
+  width: 100%;
+}
+
+/* 其它 */
+
+.downloading_tips{
+  position: fixed;
+  top:0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  z-index: 9;
+}
+
+.downloading_tips .panel{
+  position: relative;
+  width: 5.7rem;
+  box-sizing: border-box;
+  min-height: 2.94rem;
+  padding: 0.3rem;
+  background: white;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+.downloading_tips .downloading_icon{
+  position: relative;
+  width: 1.12rem;
+  height: 1.12rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.downloading_tips .downloading_icon_border{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1.12rem;
+  height: 1.12rem;
+  animation: circle 3s linear infinite ;
+}
+.downloading_tips .downloading_icon_allow{
+  width: 16px;
+  height: 20px;
+}
+
+
+@keyframes circle{
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.downloading_tips .downloading_text{
+  margin-top: 0.36rem;
+  font-size: 0.38rem;
+  color: #313131;
+  font-family: Segoe UI;
+}
+
+#weixin-tip {position: fixed; left:0; top:0; background: rgba(0,0,0,0.8); filter:alpha(opacity=80); width: 100%; height:100%; z-index: 100;}
+#weixin-tip p{text-align: center; margin-top: 10%; padding:0 5%;}
+
+
+.install_container{
+  position: fixed;
+  z-index: 999;
+  overflow: hidden;
+  overflow-y: scroll;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+}
+.install_container .install_bg{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top:0;
+  left:0;
+  background: url(/public/images/share/microvideo_androidbg.jpg) no-repeat;
+  background-size: 100% auto;
+}
+.install_container .steps_container{
+  position: relative;
+  padding-top: 74px;
+}
+.steps_container .step_close{
+  position: absolute;
+  top: 21px;
+  right: 23px;
+  border: 1px solid #FFFFFF;
+  border-radius: 17px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 9px;
+  padding-right: 16px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: white;
+  font-size: 18px;
+}
+
+.step_close_two{
+  position: fixed;
+  left: 50%;
+  bottom: 15px;
+  margin-left: -159px;
+  width: 318px;
+  background-color: #fff;
+  padding: 10px 0;
+  border-radius: 29px;
+  font-size: 21px;
+  text-decoration: underline;
+  color: #000;
+  text-align: center;
+}
+
+.steps_container .imgStepClose{
+  width: 18px;
+  height: 18px;
+  margin-right: 3px;
+}
+.steps_container .install_title{ 
+  text-align: center;
+  color: #fff;
+  font-size: 31px;
+  font-weight: bold;
+}
+.steps_container .install_app_list{
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.install_app_list .app_item{
+  font-size: 20px;
+  color: #252522;
+  background-color: #F0CF9D;
+  border-radius:24px;
+  padding: 11px 40px;
+  width: 251px;
+  margin-bottom: 30px;
+  text-align: center;
+  box-sizing: border-box;
+}
+.app_item .install_step_img{
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  overflow-y: scroll;
+  background-color: rgba(233,233,233,1);
+}
+
+.app_item .step_title{
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 48px;
+  box-sizing: border-box;
+  color: #252522;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #DBDBDB;
+}
+.step_title .btn_options_item{
+  padding: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #252522;
+  text-align: center;
+  width: calc(50% - 2px);
+  background-color: #F1F1F1;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.step_title .txt_title{
+  margin-left: 3px;
+}
+
+.step_title .img_close{
+  
+}
+.install_step_img .imgs_steps{
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 48px;
+  box-sizing: border-box;
+}
+
+.imgs_steps .img_step{
+  width: 100%;
+  min-height: 200px;
+  margin-bottom: 8px;
+}
+.fullSeceen{
+  overflow: hidden;
+  height: calc(100vh - 140px);
+}

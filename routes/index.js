@@ -54,6 +54,57 @@ router.get('/:x?.html', function(req, res) {
     
 });
 
+router.get('/v/:x?.html', function(req, res) {
+    let code = "12345"; 
+    if (null != req.params.x && "" != req.params.x) {
+        code = req.params.x;
+    }
+    // let pushId = req.query.pushId;
+
+    // console.log('code:' + code + ', pushId:' + pushId);
+    // res.render('index', {
+    //     title: 'Index',
+    //     vcode: code,
+    //     vpush: pushId,
+    // });
+    // 判断是否是QQ或者微信内置浏览器
+    let showTip = isWeixinOrQQInner(req);
+    console.log(req)
+    let ordr = [['sort', 'asc']];
+    getAppPackage(function(appData){
+        getH5Domain(function(url){
+            let e = 'pushId@' + code + "@" + (code || ''); 
+            let ua = req.headers['user-agent'];
+            let isandroid = false
+            if (url.indexOf("{code}") > -1){
+                url = url.replace("{code}",e)
+            }else{
+                url = url + "?invitations="+e;
+            }
+
+            if (/Android/.test(ua)){
+                isandroid = true
+            }else if (/iPhone/.test(ua) || /iPad/.test(ua)){
+                isandroid = false
+            }
+
+            res.render('microvideoshare', {
+                title: 'Share',
+                TestFlight:"https://itunes.apple.com/cn/app/testflight/id899247664?mt=8",
+                IOSdonwUrl:"https://www.baidu.com", 
+                vcode: code,
+                h5url: url,
+                data : encodeURIComponent( JSON.stringify(downData)),
+                renderData : downData,
+                downUrls : encodeURIComponent(appData),
+                showWeixinTip:showTip, 
+                isandroid:isandroid
+            });
+        })
+    });
+    
+});
+
 /***
  * 落地页
  */
