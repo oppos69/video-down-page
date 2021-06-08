@@ -154,6 +154,7 @@ body{
   margin-left: -166px;
   width: 333px;
   height: 45px;
+  z-index: 3;
 }
 
 .ios_tip .icon{
