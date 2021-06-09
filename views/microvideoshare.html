@@ -755,7 +755,9 @@
 
         // 轻量版安装教程下载按钮
         $(".lightweight .downbutton").click(function(){
-          let url = $(this).data("value")
+          var vcode = $('#codeSign').val() || '';
+          let url = $(this).data("value") + vcode 
+          console.log(url)
           window.open(url)
         })
 
