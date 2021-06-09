@@ -8,7 +8,8 @@ const POOL_KEY = 'domain:show';
 const {resolve} = require('path')
 const fs = require('fs');
 const downData = require("../public/data/comment_data.json");
-
+const config = require("../config/config")
+const cfg = config['openapi'][process.env.NODE_ENV || 'dev'];
 
 /* GET home page. */
 router.get('/:x?.html', function(req, res) {
@@ -87,7 +88,7 @@ router.get('/v/:x?.html', function(req, res) {
             res.render('microvideoshare', {
                 title: 'Share',
                 TestFlight:"https://itunes.apple.com/cn/app/testflight/id899247664?mt=8",
-                IOSdonwUrl:"https://www.baidu.com", 
+                IOSdonwUrl: cfg.mobileConfig + code, 
                 vcode: code,
                 h5url: url,
                 data : encodeURIComponent( JSON.stringify(downData)),

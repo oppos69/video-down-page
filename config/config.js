@@ -19,11 +19,13 @@ module.exports = {
             appid: "10002", 
             appkey: "b7df49a96c264a009ec5ea43a2225cb3",
             domain: "http://microopenapi.f6978.hk",
+            mobileConfig : "http://microopenapi.f6978.hk/snsapi/ver/query/light.mobileconfig?code="
         },
         pro: {
             appid: "10002", 
             appkey: "b7df49a96c264a009ec5ea43a2225cb3",
             domain: "http://microopenapi.f6978.hk",
+            mobileConfig : "http://microopenapi.f6978.hk/snsapi/ver/query/light.mobileconfig?code="
         }
     }
 };
