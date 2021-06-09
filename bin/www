@@ -7,6 +7,77 @@
 var app = require('../app');
 var debug = require('debug')('mongoose:server');
 var http = require('http');
+const request = require('../utils/requestClient');
+const strRandom = require("string-random")
+const redis = require("../config/redis");
+const cron = require("node-cron");
+
+/**
+ * Get app info
+ */
+function getOpenApiInfo(){
+  // 获取升级包信息
+  request.post("/snsapi/ver/query",{
+    noncestr: strRandom(10)
+  },(err,response,body) => {
+    if(err){
+      console.log("请求升级包错误：" + err)
+    }else{
+      
+      if (response.statusCode === 200 && body.code === 200){
+        redis.client.get(redis.lastVersion,(err,value) => {
+          const version = Number(value)
+
+          let maxVersion = 0;
+          for (const iterator of body.data) {
+            if (iterator.ts > maxVersion){
+              maxVersion = iterator.ts;
+            }
+          }
+  
+          const lastVersion = maxVersion
+          // 如果读取到新配置就更新数据
+          
+          if (!Number.isInteger(version) || lastVersion > version){
+            console.log("更新包配置：" + JSON.stringify(body.data))
+            redis.client.set(redis.lastVersion,lastVersion)
+            redis.client.set(redis.lastKey,JSON.stringify(body.data))
+          }
+        })
+        
+      }
+      //console.log("ver-query: " + JSON.stringify(body))
+    }
+  });
+
+  // 获取H5域名
+  request.post("/snsapi/ver/query/domain",{
+    noncestr: strRandom(10)
+  },(err,response,body) => {
+    if(err){
+      console.log("请求H5域名错误：" + err)
+    }else{
+      
+      if (response.statusCode === 200 && body.code === 200){
+        if (body.data.length > 0){
+          redis.client.set(redis.h5Domain,body.data[0].domain)
+        }
+      }
+      //console.log("ver-query: " + JSON.stringify(body))
+    }
+  });
+
+  // TODO://同步所有落地页域名数据
+
+}
+// 每两秒同步配置
+var task = cron.schedule('3 * * * * *', () =>  {
+  
+  getOpenApiInfo();
+});
+
+getOpenApiInfo();
+
 
 /**
  * Get port from environment and store in Express.

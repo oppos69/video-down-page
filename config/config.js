@@ -14,24 +14,16 @@ module.exports = {
             db: 0,
         }
     },
-    mysql: {
+    openapi: {
         dev: {
-            host: '103.120.82.133',
-            port: '3307',
-            dialect: 'mysql',
-            database: 'video',
-            username: 'video',
-            password: 'video@202007',
-            loger: false,
+            appid: "10002", 
+            appkey: "b7df49a96c264a009ec5ea43a2225cb3",
+            domain: "http://microopenapi.f6978.hk",
         },
         pro: {
-            host: '192.168.10.13',
-            port: '3306',
-            dialect: 'mysql',
-            database: 'video',
-            username: 'video',
-            password: 'video@2019',
-            loger: false,
+            appid: "10002", 
+            appkey: "b7df49a96c264a009ec5ea43a2225cb3",
+            domain: "http://microopenapi.f6978.hk",
         }
-    },
+    }
 };

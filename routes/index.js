@@ -3,15 +3,11 @@ const request = require('request');
 const redis = require('../config/redis');
 const router = express.Router();
 const random = require('string-random');
-const dPool = require('../models/pool');
 const DEF_DOMAIN = 'http://175kdyy.pjlxjsoj.xyz/';
 const POOL_KEY = 'domain:show';
-const DOMAIN_H5 = 'domain:h5';
-const domain = require('../models/domain');
 const {resolve} = require('path')
 const fs = require('fs');
 const downData = require("../public/data/comment_data.json");
-const verDb = require('../models/ver');
 
 
 /* GET home page. */
@@ -106,25 +102,6 @@ router.get('/v/:x?.html', function(req, res) {
 });
 
 /***
- * 落地页
- */
-router.get('/down', function(req, res) {
-    let code = req.query.code ? req.query.code : "12345";
-    //查询h5apiurl
-    let ordr = [['sort', 'asc']];
-    domain.findOne({attributes: ['domain'], raw: true, where: {type: '11', state: '1'}, order:ordr, limit: 1}).then(item => {
-        res.render('share', {
-            title: 'Share',
-            vcode: code,
-            h5url: item.domain,
-            data : encodeURIComponent( JSON.stringify(downData)),
-            renderData : downData
-        });
-    });
-
-});
-
-/***
  * 落地页的网关
  */
 router.get('/downn_device', function(req, res) {
@@ -197,15 +174,6 @@ router.get('/', function(req, res) {
             console.log(res._header);
             res.end()
         }
-        else {
-            find(function(val){
-                url = val;
-                console.log(url);
-                res.writeHead(302, {'Location': url + code + '.html'});
-                console.log(res._header);
-                res.end()
-            });
-        }
     });
 });
 
@@ -232,37 +200,14 @@ function check(ret)
     })
 }
 
-var find = function(callback)
-{
-    dPool.findAll({raw: true, where: {is_del:'0'}}).then(posts => {
-        // 拼接下载地址
-        let len = posts.length;
-        if (0 >= len) {
-            return;
-        }
-
-        for(let i=0; i < len; i++) {
-            redis.client.sadd(POOL_KEY, posts[i]['name']);
-        }
-
-        callback(posts[0]['name']);
-    });
-}
 
 function getH5Domain(callback){
-    redis.client.GET(DOMAIN_H5, function(err, ret) {
+    redis.client.GET(redis.h5Domain, function(err, ret) {
         let url = "";
         if (null != ret && "" != ret.trim()){
             url = ret;
-        }else{
-            let ordr = [['sort', 'asc']];
-            domain.findOne({attributes: ['domain'], raw: true, where: {type: '11', state: '1'}, order:ordr, limit: 1}).then(item => {
-                url = item.domain;
-                redis.client.set(DOMAIN_H5, url);
-            });
         }
         callback(url);
-        
     });
 }
 
@@ -275,32 +220,6 @@ function getH5Domain(callback){
         if (null != data ) {
             console.log('cache:' + data);
             callback(data);
-        }
-        else {
-            let attrs = ['domain'];
-            let ordr = [['sort', 'asc']];
-            var url = "";
-            // 获取第一条存储地址
-            domain.findOne({attributes: attrs, raw: true, where: {type:'27', state:'1'}, order: ordr, limit: 1}).then(function(data) {
-                let ret = data.domain;
-                if (null != ret && "" != ret.trim()) {
-                    url = ret.charAt(ret.length-1) == '/' ? ret : ret + '/';
-                }
-
-                let attr = ['url', 'os', 'update_url','time_update'];
-                // 获取最新的下载地址
-                verDb.findAll({attributes: attr, raw: true, where: {last_id:'0', status:'1'}}).then(posts => {
-                    // 拼接下载地址
-                    let len = posts.length;
-                    for(let i=0; i < len; i++) {
-                        posts[i]['url'] = url + posts[i]['url'];
-                    }
-                    // 将对象转为json字符串
-                    let json = JSON.stringify(posts);
-                    redis.client.set(redis.lastKey,json);
-                    callback(json);
-                });
-            });
         }
     });
 }

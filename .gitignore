@@ -64,3 +64,4 @@ typings/
 *.ipr
 *.iws
 out/
+docs/
