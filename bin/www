@@ -67,12 +67,36 @@ function getOpenApiInfo(){
     }
   });
 
-  // TODO://同步所有落地页域名数据
+  // 同步所有落地页域名数据
+  request.post("/snsapi/ver/query/domain",{
+    noncestr: strRandom(10),
+    type: 11
+  },(err,response,body) => {
+    if(err){
+      console.log("请求落地页域名错误：" + err)
+    }else{
+      
+      if (response.statusCode === 200 && body.code === 200){
+        
+        const urls = [];
+        for (const iterator of body.data) {
+          urls.push(iterator.domain)
+        }
+        // 取并集存储
+        redis.client.sinterstore(redis.downDomains, urls)
+        // 在存储新增的
+        redis.client.sadd(redis.downDomains, urls)
 
+        //if (body.data.length > 0){
+        //  redis.client.set(redis.downDomains,body.data[0].domain)
+        //}
+      }
+      //console.log("ver-query: " + JSON.stringify(body))
+    }
+  });
 }
 // 每两秒同步配置
-var task = cron.schedule('3 * * * * *', () =>  {
-  
+var task = cron.schedule('*/3 * * * * *', () =>  {
   getOpenApiInfo();
 });
 

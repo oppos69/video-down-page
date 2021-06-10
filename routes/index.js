@@ -164,7 +164,7 @@ router.get('/share', function(req, res) {
  */
 router.get('/', function(req, res) {
     var code = random();
-    redis.client.srandmember(POOL_KEY, function(err, ret) {
+    redis.client.srandmember(redis.downDomains, function(err, ret) {
         var url = DEF_DOMAIN;
         if (null != ret && "" != ret.trim())
         {
