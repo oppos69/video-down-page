@@ -189,17 +189,20 @@
   "IOSdownlist":[
     {
       "id":0,
+      "toptitle":"第一步",
       "title":"首先安装【TestFlight】然后返回本页",
       "buttontext":"安装TestFlight",
       "openlink":"https://ww.baidu.com"
     },
     {
-      "id":1,
+      "id":1, 
+      "toptitle":"第二步",
       "title":"点击下载【APP名称】",
       "buttontext":"点击下载 微视",
       "openlink":"https://ww.baidu.com"
     },{
       "id":2,
+      "toptitle":"备用下载",
       "title":"备用下载通道",
       "buttontext":"点击下载 微视",
       "openlink":"https://ww.baidu.com"

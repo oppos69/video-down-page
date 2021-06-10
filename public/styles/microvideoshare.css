@@ -196,6 +196,12 @@ body{
   margin-bottom: 14px;
 }
 
+.logotip .logoicon .img{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .IOSfluent .list{
   width: 100%;
   height: auto;
@@ -266,10 +272,16 @@ body{
 .IOSfluent .list .icon{
   width: 31px;
   height: 31px;
-  border-radius: 3px;
+  border-radius: 5px;
   overflow: hidden;
   background-color: #737373;
   margin-right: 15px;
+}
+
+.IOSfluent .icon .img{
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .downCourse{
@@ -432,9 +444,63 @@ body{
   font-family: Segoe UI;
 }
 
-#weixin-tip {position: fixed; left:0; top:0; background: rgba(0,0,0,0.8); filter:alpha(opacity=80); width: 100%; height:100%; z-index: 100;}
+#weixin-tip {position: fixed; left:0; top:0; background: rgba(0,0,0,0.8); filter:alpha(opacity=80); width: 100%; height:100%; z-index: 100; overflow: scroll;}
 #weixin-tip p{text-align: center; margin-top: 10%; padding:0 5%;}
+.share-img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
 
+
+
+.share-img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.bg-install_close_black {
+  width: 18px; height: 18px;
+  background: url('css_sprites.png') -366px -208px;
+}
+
+.bg-InstallStep {
+  width: 54px; height: 54px;
+  background: url('css_sprites.png') -292px -208px;
+}
+
+.bg-more_icon {
+  width: 14px; height: 14px;
+  background: url('css_sprites.png') -366px -246px;
+}
+
+.bg-save_desktop {
+  width: 17px; height: 17px;
+  background: url('css_sprites.png') -86px -310px;
+}
+
+.bg-share_guide {
+  width: 375px; height: 178px;
+  background: url('css_sprites.png') -10px -10px;
+}
+
+.bg-down_tips {
+  width: 262px; height: 82px;
+  background: url('css_sprites.png') -10px -208px;
+}
+
+.bg-install_back {
+  width: 18px; height: 18px;
+  background: url('css_sprites.png') -10px -310px;
+}
+
+.bg-install_close {
+  width: 18px; height: 18px;
+  background: url('css_sprites.png') -48px -310px;
+}
 
 .install_container{
   position: fixed;

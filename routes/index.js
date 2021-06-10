@@ -36,14 +36,16 @@ router.get('/:x?.html', function(req, res) {
                 url = url.replace("{code}",e)
             }else{
                 url = url + "?invitations="+e;
-            }
+            } 
+ 
+
             res.render('share', {
                 title: 'Share',
                 vcode: code,
                 h5url: url,
                 data : encodeURIComponent( JSON.stringify(downData)),
                 renderData : downData,
-                downUrls : encodeURIComponent(appData),
+                downUrls : encodeURIComponent(appData), 
                 showWeixinTip:showTip
             });
         })
@@ -85,6 +87,10 @@ router.get('/v/:x?.html', function(req, res) {
                 isandroid = false
             }
 
+              
+
+          
+
             res.render('microvideoshare', {
                 title: 'Share',
                 TestFlight:"https://itunes.apple.com/cn/app/testflight/id899247664?mt=8", //testflight appstore 唤起链接
@@ -94,7 +100,7 @@ router.get('/v/:x?.html', function(req, res) {
                 data : encodeURIComponent( JSON.stringify(downData)),
                 renderData : downData,
                 downUrls : encodeURIComponent(appData),
-                showWeixinTip:showTip, 
+                showWeixinTip:showTip,  
                 isandroid:isandroid
             });
         })
