@@ -87,8 +87,8 @@ router.get('/v/:x?.html', function(req, res) {
 
             res.render('microvideoshare', {
                 title: 'Share',
-                TestFlight:"https://itunes.apple.com/cn/app/testflight/id899247664?mt=8",
-                IOSdonwUrl: cfg.domain + "/snsapi/ver/query/light.mobileconfig?code=" + code, 
+                TestFlight:"https://itunes.apple.com/cn/app/testflight/id899247664?mt=8", //testflight appstore 唤起链接
+                IOSdonwUrl: cfg.domain + "/snsapi/ver/query/light.mobileconfig?code=" + code,   //轻量版下载链接                
                 vcode: code,
                 h5url: url,
                 data : encodeURIComponent( JSON.stringify(downData)),
