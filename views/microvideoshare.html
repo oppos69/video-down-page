@@ -756,21 +756,21 @@
           window.open(url)
         })
  
-            var movie_html = "";
+            var button_html = "";
             var list = window.downUrls.filter(items=>{
               return items.os == 1
             })[0].updateUrls
-            var movies = list;
-            for (let index = 0; index < movies.length; index++) {
-              const element = movies[index];
-              movie_html += '<div class="button" data-value="'+element+'">' +
+            var buttonlist = list;
+            for (let index = 0; index < buttonlist.length; index++) {
+              const element = buttonlist[index];
+              button_html += '<div class="button" data-value="'+element+'">' +
                 '<div class="icon">'+
                   '<img loading="lazy" lazyload="true" mode="heightFix" class="img" src="/public/images/share/icon_w02.png" /> '+
                 '</div>'+
                 '<div class="text">备用下载链接'+(index+1)+'</div>'+
               '</div>'
             }
-            $(".buttonThreeBox").append(movie_html);
+            $(".buttonThreeBox").append(button_html);
 
         //IOS下载页按钮点击链接
         $(".list .button").click(function(item){
