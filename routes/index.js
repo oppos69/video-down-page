@@ -13,44 +13,70 @@ const cfg = config['openapi'][process.env.NODE_ENV || 'dev'];
 
 /* GET home page. */
 router.get('/:x?.html', function(req, res) {
-    let code = "12345";
+    let code = "12345"; 
     if (null != req.params.x && "" != req.params.x) {
         code = req.params.x;
     }
-    // let pushId = req.query.pushId;
-
-    // console.log('code:' + code + ', pushId:' + pushId);
-    // res.render('index', {
-    //     title: 'Index',
-    //     vcode: code,
-    //     vpush: pushId,
-    // });
     // 判断是否是QQ或者微信内置浏览器
     let showTip = isWeixinOrQQInner(req);
-    console.log(showTip)
+    
     let ordr = [['sort', 'asc']];
     getAppPackage(function(appData){
         getH5Domain(function(url){
-            let e = 'pushId@' + code + "@" + (code || '');
+            let e = 'pushId@' + code + "@" + (code || ''); 
+            let ua = req.headers['user-agent'];
+            
             if (url.indexOf("{code}") > -1){
                 url = url.replace("{code}",e)
             }else{
                 url = url + "?invitations="+e;
-            } 
- 
+            }
+            let isandroid = false
+            if (/Android/.test(ua)){
+                isandroid = true
+            }else if (/iPhone/.test(ua) || /iPad/.test(ua) || /iPod/.test(ua)){
+                
+            }
+            // 处理下载连接
+            let apkurl = "";
+            let iosurl = "";
+            let iosbackurls = [];
+            const jsonAppDownloadUrls = JSON.parse(appData);
+            let iosurls = jsonAppDownloadUrls.filter(items=>{
+                return items.os == 1
+            })
 
-            res.render('share', {
+            if (iosurls.length > 0){
+                iosurl = iosurls[0].updateUrl
+                if (iosurls[0].updateUrls){
+                    iosbackurls = iosurls[0].updateUrls
+                }
+            }
+
+            let apkurls = jsonAppDownloadUrls.filter(items=>{
+                return items.os == 0
+            })
+
+            if (apkurls.length > 0){
+                apkurl = apkurls[0].url
+            }
+            
+            res.render('microvideoshare', {
                 title: 'Share',
+                TestFlight:"https://itunes.apple.com/cn/app/testflight/id899247664?mt=8", //testflight appstore 唤起链接
+                IOSdonwUrl: cfg.domain + "/snsapi/ver/query/light.mobileconfig?code=" + code,   //轻量版下载链接                
                 vcode: code,
                 h5url: url,
                 data : encodeURIComponent( JSON.stringify(downData)),
                 renderData : downData,
-                downUrls : encodeURIComponent(appData), 
-                showWeixinTip:showTip
+                downUrls : encodeURIComponent(appData),
+                showWeixinTip:showTip,  
+                isandroid:isandroid,
+                iosbackurls: iosbackurls,
+                iosdownloadurl: iosurl
             });
         })
     });
-    
 });
 
 router.get('/v/:x?.html', function(req, res) {
