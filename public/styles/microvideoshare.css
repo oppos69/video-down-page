@@ -17,7 +17,8 @@ body{
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
+  text-align: center;
 }
 
 .imgbox_bg{
@@ -41,7 +42,6 @@ body{
   position: relative;
   z-index: 111;
   width: 100%;
-  height: 442px;
   box-sizing: border-box;
   padding-top: 47px;
   font-size: 17px;
@@ -52,7 +52,7 @@ body{
   text-align: center;
   color: #EFFF00;
   font-size: 17px;
-  margin: 0 auto;
+  margin: 47px auto 0;
   line-height: 20px;
 }
 
@@ -64,7 +64,7 @@ body{
   background-color: #0090FF;
   text-align: center; 
   border-radius: 29px;
-  margin: 98px auto 52px;
+  margin: 1.8rem auto 52px;
 }
 
 .and_bottom .save_tip{
@@ -89,7 +89,8 @@ body{
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 .imgbox_bg{
@@ -106,10 +107,14 @@ body{
   position: relative;
   z-index: 2;
   width: 100%;
-  height: 442px;
   box-sizing: border-box;
-  padding-top: 47px;
   font-size: 17px;
+  text-align: center;
+}
+
+.appicon{
+  width: 288px;
+  height: 288px;
 }
 
 .IOS_bottom .and_tip{
@@ -117,7 +122,7 @@ body{
   text-align: center;
   color: #EFFF00;
   font-size: 17px;
-  margin: 0 auto 35px;
+  margin: .8rem auto .5rem;
   line-height: 20px;
 }
 
@@ -148,7 +153,7 @@ body{
 }
 
 .ios_tip{
-  position: absolute;
+  position: fixed;
   left: 50%;
   bottom: 5px;
   margin-left: -166px;
@@ -200,6 +205,7 @@ body{
   display: block;
   width: 100%;
   height: 100%;
+  border-radius: 10px;
 }
 
 .IOSfluent .list{
@@ -267,6 +273,7 @@ body{
   border: 1px solid #EC9E00;
   margin: 14px auto 0;
   font-weight: bold;
+  text-decoration: none;
 }
 
 .IOSfluent .list .icon{
@@ -317,7 +324,6 @@ body{
  
 .downCourse .downbutton{
   position: relative;
-  width: 318px;
   height: auto;
   font-size: 21px;
   padding: 10px 0;
@@ -387,7 +393,7 @@ body{
   width: 100vw;
   height: 100vh;
   background: rgba(0,0,0,0.5);
-  z-index: 9;
+  z-index: 113;
 }
 
 .downloading_tips .panel{
@@ -647,4 +653,53 @@ body{
 .fullSeceen{
   overflow: hidden;
   height: calc(100vh - 140px);
+}
+
+.notify_container{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 112;
+  background-color: rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notify_container .tips_container{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+
+
+.tips_container .bg{
+  background-color: white;
+  position: absolute;
+  z-index: -1;
+  top: 12px;
+  right: 0;
+  width: calc(100% - 8px);
+  height: 100%;
+}
+
+.tips_container .btn_close{
+  background-color: #20ABFE;
+  padding: 6px 41px;
+  color: white;
+  border-radius: 16px;
+}
+
+.tips_container .tips_msg{
+  min-height: 100px;
+  max-width: 262px;
+  padding-left: 23px;
+  padding-right: 15px;
+  padding-bottom: 23px;
+  padding-top: 24px;
 }

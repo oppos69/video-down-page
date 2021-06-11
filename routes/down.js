@@ -20,7 +20,7 @@ router.post('/profile', function(req, res, next)
         if(err){
           console.log("上报下载数据错误：" + err)
         }else{
-          console.log(body)
+        //  console.log(body)
           //console.log("ver-query: " + JSON.stringify(body))
         }
         res.write("success");
