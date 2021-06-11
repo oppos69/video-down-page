@@ -1,5 +1,9 @@
 # xchun
 
+#### ��Ŀ����
+express + mysql + sequelize 
+# xchun
+
 #### 项目介绍
 express + mysql + sequelize 
 
