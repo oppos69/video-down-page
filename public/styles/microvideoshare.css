@@ -543,7 +543,10 @@ body{
 }
 
 .install_container{
-  position: fixed;
+  position: absolute;
+  display: flex; 
+  justify-content: center;
+  align-items: center; 
   z-index: 999;
   overflow: hidden;
   overflow-y: scroll;
@@ -551,7 +554,6 @@ body{
   left: 0;
   width: 100vw;
   height: 100vh;
-
 }
 .install_container .install_bg{
   position: absolute;
@@ -564,7 +566,7 @@ body{
 }
 .install_container .steps_container{
   position: relative;
-  padding-top: 74px;
+  /* padding-top: 74px; */
 }
 .steps_container .step_close{
   position: absolute;
