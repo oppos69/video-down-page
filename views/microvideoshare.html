@@ -77,6 +77,10 @@
     <!-- IOS下载页 -->
     <div class="IOSfluent">
         <div class="logotip">
+          <div class="backbutton">
+            <img loading="lazy" lazyload="true" mode="heightFix" class="icon" src="/public/images/share/backicon_01.png" />
+            <div class="text">返回</div>
+          </div>
           <div class="logoicon">
             <img loading="lazy" lazyload="true" mode="heightFix" class="img" src="/public/images/share/icon_w02.png" />
           </div>
@@ -160,8 +164,13 @@
     </div>
 
     <div class="lightweight">
-      <div class="toptitle">轻量版安装教程</div>
-      <div class="lightBox">
+      <div class="toptitle">
+        <div class="backicon">
+          <img class="img" src="/public/images/share/backicon_02.png" />
+        </div>
+        轻量版安装教程
+      </div>
+      <div class="lightBox"> 
         <div class="downbutton" data-value="{{IOSdonwUrl}}">立即下载</div> 
         <img class="img" src="/public/images/share/lightimg.jpg" />
       </div>
@@ -396,6 +405,17 @@
         document.querySelector(".lightweight .downbutton").addEventListener("click",(e) => {
           downloadFile(e.currentTarget.dataset.value);
         });
+
+        // IOS返回按钮
+        document.querySelector('.backbutton').addEventListener("click",(e)=>{
+          document.querySelector(".IOSfluent").style = "display: none";
+        })
+
+        //关闭IOS轻量版安装教程
+        document.querySelector(".backicon").addEventListener('click',()=>{
+          document.querySelector(".lightweight").style = "display: none";
+        })
+
         // ios安装教程关闭
         document.querySelector(".tip02close").addEventListener("click",(e) => {
           document.querySelector(".IOSfluent").style = "display: block";
@@ -438,7 +458,7 @@
           // 固定首页
           document.querySelector(".container").classList.remove("fullSeceen")
           document.querySelector(".install_container").style = "display:none";
-        });
+        }); 
         // 显示某一个机型的参考图
         for (const iterator of document.querySelectorAll(".install_app_list .app_item")) {
           //

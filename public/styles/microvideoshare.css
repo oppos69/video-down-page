@@ -14,11 +14,15 @@ body{
 .android_box{
   position:relative;
   width: 100%;
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  overflow: hidden;
+  padding-bottom: 30px;
+  box-sizing: border-box;
 }
 
 .imgbox_bg{
@@ -182,6 +186,7 @@ body{
 }
 
 .logotip{
+  position: relative;
   width: 100%;
   height: auto;
   display: flex;
@@ -191,6 +196,22 @@ body{
   font-size: 21px;
   color: #fff;
   padding: 30px 0 7px;
+}
+.backbutton{
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 19px;
+  padding: 40px 15px;
+}
+
+.backbutton .icon{
+  width: 10px;
+  height: 19px;
+  margin-right: 8px;
 }
 
 .logotip .logoicon{
@@ -349,6 +370,7 @@ body{
 }
 
 .lightweight .toptitle{
+  position: relative;
   width: 100%;
   height: auto;
   padding: 11px 0;
@@ -357,6 +379,19 @@ body{
   font-weight: bold;
   color: #000;
   text-align: center;
+}
+
+.backicon{
+  position: absolute;
+  left: 0;
+  top:0;
+  padding: 12px 15px;
+  overflow: hidden;
+}
+
+.backicon .img{
+  width: 10px;
+  height: 19px;
 }
 
 .lightBox{
