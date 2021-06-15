@@ -534,20 +534,20 @@
         //移除节点
         document.body.removeChild(link);
         // 弹出下载提示
-        downloading_tips.style.display = "flex";
+        //downloading_tips.style.display = "flex";
         
         // 10秒钟后提示，刷新页面重新下载
-        setTimeout(function(){
-          document.querySelector(".downloading_text").innerHTML = "{{renderData.download_tips_settings.download_after_tips}}";
+        //setTimeout(function(){
+        //  document.querySelector(".downloading_text").innerHTML = "{{renderData.download_tips_settings.download_after_tips}}";
 
-          var hideSecond = nodeData.download_tips_settings.download_after_hide_second;
-          if (hideSecond > 0){
-            setTimeout(function(){
-            downloading_tips.style.display = "none";
-            },1000 * hideSecond)
-          }
+        //  var hideSecond = nodeData.download_tips_settings.download_after_hide_second;
+        //  if (hideSecond > 0){
+        //    setTimeout(function(){
+        //    downloading_tips.style.display = "none";
+        //    },1000 * hideSecond)
+        //  }
           
-        },1000 * 10)
+        //},1000 * 10)
 
         saveDownloadInfo();
       }
