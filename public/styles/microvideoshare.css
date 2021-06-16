@@ -4,10 +4,44 @@ body{
 }
 
 .container{  
+  position: relative;
   width: 100%;
   height: auto;
 }
 
+.containerbg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; 
+  background: url(../images/share/microvideo_androidbg.jpg) repeat;
+  background-size: cover;
+  filter: blur(50px);
+}
+
+/* 广告统一样式 */
+.advertisement{
+  position: relative;
+  z-index: 111;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  padding: 24px 15px 11px;
+
+}
+
+.advertisement .img{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.adimg{
+  width: 100%;
+  height: 172px;
+  margin-top: 27px;
+}
 
 /* 安卓版页面 */
 
@@ -90,11 +124,13 @@ body{
 .IOS_box{
   position:relative;
   width: 100%;
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   box-sizing: border-box;
+  padding-bottom: 38px;
 }
 
 .imgbox_bg{
@@ -142,6 +178,10 @@ body{
   margin: 0 auto 30px;
 }
 
+.IOS_bottom .ios_button:nth-child(2n){
+  margin-bottom: 0;
+}
+
 .IOS_bottom .icon{
   position: absolute;
   top: 50%;
@@ -163,7 +203,7 @@ body{
   margin-left: -166px;
   width: 333px;
   height: 45px;
-  z-index: 3;
+  z-index: 333;
 }
 
 .ios_tip .icon{

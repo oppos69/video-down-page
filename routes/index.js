@@ -18,12 +18,12 @@ router.get('/:x?.html', function(req, res) {
         code = req.params.x;
     }
     // 判断是否是PC打开链接
-    if (isPCBrowser(req)){
+    // if (isPCBrowser(req)){
         
-        res.writeHead(302, {'Location': '/pc/' + code + '.html'});
-        res.end()
-        return;
-    }
+    //     res.writeHead(302, {'Location': '/pc/' + code + '.html'});
+    //     res.end()
+    //     return;
+    // }
     // 判断是否是QQ或者微信内置浏览器
     let showTip = isWeixinOrQQInner(req);
     
