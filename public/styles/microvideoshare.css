@@ -17,7 +17,7 @@ body{
   height: 100%; 
   background: url(../images/share/microvideo_androidbg.jpg) repeat;
   background-size: cover;
-  filter: blur(50px);
+  filter: blur(5px);
 }
 
 /* 广告统一样式 */
@@ -150,6 +150,7 @@ body{
   box-sizing: border-box;
   font-size: 17px;
   text-align: center;
+  padding-top: .47rem;
 }
 
 .appicon{
