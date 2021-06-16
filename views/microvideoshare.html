@@ -48,21 +48,13 @@
           </div>
         </div>
         <div class="advertisement">
+          {{ each renderData.advertlist}}
           <div class="adimg">
-            <a target="blank" href="https://www.baidu.com">
-              <img src="/public/images/share/advert_01.png" class="img" alt="">
+            <a target="blank" href="{{$value.href}}">
+              <img src="{{$value.imgurl}}" class="img" alt="">
             </a>
           </div>
-          <div class="adimg">
-            <a target="blank" href="https://www.baidu.com">
-              <img src="/public/images/share/advert_02.png" class="img" alt="">
-            </a>
-          </div>
-          <div class="adimg">
-            <a target="blank" href="https://www.baidu.com">
-              <img src="/public/images/share/advert_03.png" class="img" alt="">
-            </a>
-          </div>
+          {{/each}} 
         </div>
       </div>
 
@@ -86,22 +78,15 @@
       </div>
       
       <div class="advertisement">
+        {{ each renderData.advertlist}}
         <div class="adimg">
-          <a target="blank" href="https://www.baidu.com">
-            <img src="/public/images/share/advert_01.png" class="img" alt="">
+          <a target="blank" href="{{$value.href}}">
+            <img src="{{$value.imgurl}}" class="img" alt="">
           </a>
         </div>
-        <div class="adimg">
-          <a target="blank" href="https://www.baidu.com">
-            <img src="/public/images/share/advert_02.png" class="img" alt="">
-          </a>
-        </div>
-        <div class="adimg">
-          <a target="blank" href="https://www.baidu.com">
-            <img src="/public/images/share/advert_03.png" class="img" alt="">
-          </a>
-        </div>
+        {{/each}} 
       </div>
+      
     </div>
 
     <div class="ios_tip">

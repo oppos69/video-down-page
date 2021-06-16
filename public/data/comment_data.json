@@ -76,6 +76,18 @@
     },{
       "imgurl":"/public/images/share/course03.jpg"
     }
+  ],
+  "advertlist":[
+    {
+      "imgurl":"/public/images/share/advert_01.png",
+      "href":"https://www.baidu.com"
+    },{
+      "imgurl":"/public/images/share/advert_02.png",
+      "href":"https://www.baidu.com"
+    },{
+      "imgurl":"/public/images/share/advert_03.png",
+      "href":"https://www.baidu.com"
+    }
   ]
   
 }
