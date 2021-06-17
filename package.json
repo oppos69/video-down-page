@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node bin/www"
+    "start": "node bin/www",
+    "startpro": "set NODE_ENV=pro && set REDIS_URI=redis://103.120.82.133:6380 && node bin/www"
   },
   "dependencies": {
     "art-template": "^4.12.2",

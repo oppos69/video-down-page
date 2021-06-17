@@ -3,6 +3,12 @@ const config = require('./config');
 
 //export NODE_ENV=dev
 const cfg = config['redis'][process.env.NODE_ENV || 'dev'];
+
+const ENV_REDIS_URI = process.env.REDIS_URI
+console.log("env_redis_uri:" ,ENV_REDIS_URI)
+if (ENV_REDIS_URI){
+    cfg['uri'] = ENV_REDIS_URI
+}
 const client = redis.createClient(cfg['uri'], {db:cfg['db']});
 // 缓存key
 const KEY_VER_LAST = 'sys:ver:last:node';
