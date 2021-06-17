@@ -62,6 +62,8 @@ function getOpenApiInfo(){
         if (body.data.length > 0){
           redis.client.set(redis.h5Domain,body.data[0].domain)
         }
+      }else{
+        console.log("获取H5域名数据失败")
       }
       //console.log("ver-query: " + JSON.stringify(body))
     }
