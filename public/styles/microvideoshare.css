@@ -23,7 +23,7 @@ body{
 /* 广告统一样式 */
 .advertisement{
   position: relative;
-  z-index: 111;
+  z-index: 1;
   width: 100%;
   height: auto;
   box-sizing: border-box;
@@ -220,7 +220,7 @@ body{
   left: 0;
   z-index: 3;
   width: 100%;
-  height: auto;
+  height: 100%;
   min-height: 100vh;
   background: #443030;
   display: none;
@@ -403,7 +403,7 @@ body{
   left: 0;
   top: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
   min-height: 100vh;
   background-color: #fff;
   z-index: 5;
