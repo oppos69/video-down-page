@@ -401,7 +401,7 @@
         for (const iterator of document.querySelectorAll(".iosbutton_01")) {
           iterator.addEventListener("click", (e) => {
             let urlInfo = JSON.parse(e.currentTarget.dataset.value);
-            
+            document.documentElement.scrollTop = 0
             // 0 : 否 1： 是
             if (urlInfo.updateUrlType === 0){ 
               downloadFile(urlInfo.updateUrl)
