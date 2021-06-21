@@ -33,7 +33,6 @@ router.get('/:x?.html', function(req, res) {
         getAppPackage(function(appData){
             getH5Domain(function(url){
                 // 落地页配置数据
-                console.log(downconfig)
                 const jsonConfig = JSON.parse(downconfig)
 
                 let e = 'pushId@' + code + "@" + (code || ''); 
@@ -73,7 +72,7 @@ router.get('/:x?.html', function(req, res) {
                 if (apkurls.length > 0){
                     apkurl = apkurls[0].url
                 }
-                console.log(iosbackurls)
+                
                 res.render('microvideoshare', {
                     title: 'Share',
                     TestFlight:"https://itunes.apple.com/cn/app/testflight/id899247664?mt=8", //testflight appstore 唤起链接
