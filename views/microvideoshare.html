@@ -414,8 +414,8 @@
         }
         
         if (document.querySelector(".iosbutton_02")){
-          document.documentElement.scrollTop = 0
           document.querySelector(".iosbutton_02").addEventListener("click", (e) => {
+            document.documentElement.scrollTop = 0
             document.querySelector(".lightweight").style = "display: block";
           })
         }
