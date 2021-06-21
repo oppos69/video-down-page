@@ -16,8 +16,9 @@ body{
   width: 100%;
   height: 100%; 
   background: url(../images/share/microvideo_androidbg.jpg) repeat;
-  background-size: cover;
+  background-position-y: 100vh;
   filter: blur(5px);
+  transform: scaleY(-1);
 }
 
 /* 广告统一样式 */
