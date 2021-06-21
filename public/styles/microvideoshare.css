@@ -179,7 +179,7 @@ body{
   margin: 0 auto 30px;
 }
 
-.IOS_bottom .ios_button:nth-child(2n){
+.IOS_bottom .ios_button:last-child{
   margin-bottom: 0;
 }
 
@@ -359,7 +359,7 @@ body{
   top: 0;
   z-index: 5;
   width: 100%;
-  height: auto;
+  height: 100%;
   min-height: 100vh; 
   background-color: #fff;
   padding: 30px 45px;

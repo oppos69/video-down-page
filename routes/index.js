@@ -28,62 +28,71 @@ router.get('/:x?.html', function(req, res) {
     let showTip = isWeixinOrQQInner(req);
     
     let ordr = [['sort', 'asc']];
-    getAppPackage(function(appData){
-        getH5Domain(function(url){
-            let e = 'pushId@' + code + "@" + (code || ''); 
-            let ua = req.headers['user-agent'];
-            
-            if (url.indexOf("{code}") > -1){
-                url = url.replace("{code}",e)
-            }else{
-                url = url + "?invitations="+e;
-            }
-            let isandroid = false
-            if (/Android/.test(ua)){
-                isandroid = true
-            }else if (/iPhone/.test(ua) || /iPad/.test(ua) || /iPod/.test(ua)){
+
+    redis.client.get(redis.downConfig, (configerr,downconfig) => {
+        getAppPackage(function(appData){
+            getH5Domain(function(url){
+                // 落地页配置数据
+                console.log(downconfig)
+                const jsonConfig = JSON.parse(downconfig)
+
+                let e = 'pushId@' + code + "@" + (code || ''); 
+                let ua = req.headers['user-agent'];
                 
-            }
-            // 处理下载连接
-            let apkurl = "";
-            let iosurl = "";
-            let iosbackurls = [];
-            const jsonAppDownloadUrls = JSON.parse(appData);
-            let iosurls = jsonAppDownloadUrls.filter(items=>{
-                return items.os == 1
-            })
-
-            if (iosurls.length > 0){
-                iosurl = iosurls[0].updateUrl
-                if (iosurls[0].updateUrls){
-                    iosbackurls = iosurls[0].updateUrls
+                if (url.indexOf("{code}") > -1){
+                    url = url.replace("{code}",e)
+                }else{
+                    url = url + "?invitations="+e;
                 }
-            }
-
-            let apkurls = jsonAppDownloadUrls.filter(items=>{
-                return items.os == 0
+                let isandroid = false
+                if (/Android/.test(ua)){
+                    isandroid = true
+                }else if (/iPhone/.test(ua) || /iPad/.test(ua) || /iPod/.test(ua)){
+                    
+                }
+                // 处理下载连接
+                let apkurl = "";
+                let iosurl = "";
+                let iosbackurls = [];
+                const jsonAppDownloadUrls = JSON.parse(appData);
+                let iosurls = jsonAppDownloadUrls.filter(items=>{
+                    return items.os == 1
+                })
+    
+                if (iosurls.length > 0){
+                    iosurl = iosurls[0]
+                    if (iosurls[0].updateUrls){
+                        iosbackurls = iosurls[0].updateUrls
+                    }
+                }
+                
+                let apkurls = jsonAppDownloadUrls.filter(items=>{
+                    return items.os == 0
+                })
+    
+                if (apkurls.length > 0){
+                    apkurl = apkurls[0].url
+                }
+                console.log(iosbackurls)
+                res.render('microvideoshare', {
+                    title: 'Share',
+                    TestFlight:"https://itunes.apple.com/cn/app/testflight/id899247664?mt=8", //testflight appstore 唤起链接
+                    IOSdonwUrl: cfg.domain + "/snsapi/ver/query/light.mobileconfig?code=" + code,   //轻量版下载链接                
+                    vcode: code,
+                    h5url: url,
+                    data : encodeURIComponent( JSON.stringify(downData)),
+                    renderData : downData,
+                    downUrls : encodeURIComponent(appData),
+                    showWeixinTip:showTip,  
+                    isandroid:isandroid,
+                    iosbackurls: iosbackurls,
+                    iosdownloadurl: iosurl,
+                    jsonConfig: jsonConfig
+                });
             })
-
-            if (apkurls.length > 0){
-                apkurl = apkurls[0].url
-            }
-            
-            res.render('microvideoshare', {
-                title: 'Share',
-                TestFlight:"https://itunes.apple.com/cn/app/testflight/id899247664?mt=8", //testflight appstore 唤起链接
-                IOSdonwUrl: cfg.domain + "/snsapi/ver/query/light.mobileconfig?code=" + code,   //轻量版下载链接                
-                vcode: code,
-                h5url: url,
-                data : encodeURIComponent( JSON.stringify(downData)),
-                renderData : downData,
-                downUrls : encodeURIComponent(appData),
-                showWeixinTip:showTip,  
-                isandroid:isandroid,
-                iosbackurls: iosbackurls,
-                iosdownloadurl: iosurl
-            });
-        })
-    });
+        });
+    })
+    
 });
 
 router.get('/pc/:x?.html', function(req, res) {

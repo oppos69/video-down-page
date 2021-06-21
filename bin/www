@@ -37,8 +37,8 @@ function getOpenApiInfo(){
   
           const lastVersion = maxVersion
           // 如果读取到新配置就更新数据
-          
           if (!Number.isInteger(version) || lastVersion > version){
+            
             console.log("更新包配置：" + JSON.stringify(body.data))
             redis.client.set(redis.lastVersion,lastVersion)
             redis.client.set(redis.lastKey,JSON.stringify(body.data))
@@ -96,8 +96,32 @@ function getOpenApiInfo(){
       //console.log("ver-query: " + JSON.stringify(body))
     }
   });
+
+  // 同步落地页配置
+  request.post("/snsapi/ver/config",{
+    noncestr: strRandom(10),
+    type: 11
+  },(err,response,body) => {
+    if(err){
+      console.log("请求落地页配置数据错误：" + err)
+    }else{
+      let strData = "{landingState:0}"
+      if (response.statusCode === 200 && body.code === 200 &&  body.data){
+        // 在存储新增的
+        strData = JSON.stringify(body.data);
+        redis.client.set(redis.downConfig, strData);
+        //if (body.data.length > 0){
+        //  redis.client.set(redis.downDomains,body.data[0].domain)
+        //}
+      }else{
+        console.log("读取落地页配置数据失败");
+      }
+      
+      //console.log("ver-query: " + JSON.stringify(body))
+    }
+  });
 }
-// 每两秒同步配置
+// 每三秒同步配置
 var task = cron.schedule('*/3 * * * * *', () =>  {
   getOpenApiInfo();
 });

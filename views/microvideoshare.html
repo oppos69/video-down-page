@@ -66,15 +66,25 @@
       <div class="IOS_bottom">
         <img src="/public/images/share/icon_w02.png" class="appicon" alt="">
         <div class="and_tip">应用报毒为误报，我们依靠广告盈利并非病毒！</div>
-        <div class="ios_button iosbutton_01" data-value="0">
+        <div class="ios_button iosbutton_01" data-value="{{iosdownloadurl}}">
           <div>iOS流畅版下载</div>
           <div class="small">稳定流畅，功能完整</div>
           <img class="icon" src="/public/images/share/icon01.png" />
         </div>
-        <div class="ios_button iosbutton_02" data-value="1">
-          <div>iOS轻量版下载</div>
-          <div class="small">备用</div>
-        </div>
+
+        {{each iosbackurls}}
+          <div class="ios_button iosbutton_01" data-value="{{$value}}">
+            <div>备用下载链接{{$index+1}}</div>
+            <div class="small">备用</div>
+          </div>
+        {{/each}}
+
+        {{ if jsonConfig.landingState == 1}}
+          <div class="ios_button iosbutton_02" data-value="1">
+            <div>iOS轻量版下载</div>
+            <div class="small">备用</div>
+          </div>
+        {{/if}}
       </div>
       
       <div class="advertisement">
@@ -134,40 +144,18 @@
             </div>
             <div class="box">
               <div class="title">点击下载【APP名称】</div>
-              <div class="button download" data-value="{{iosdownloadurl}}">
+              <div id="btnDownload" class="button download" data-value="">
                 <div class="icon"> 
                   <img loading="lazy" lazyload="true" mode="heightFix" class="img" src="/public/images/share/icon_w02.png"> 
                 </div>
                 <div class="text">点击下载 微视</div>
               </div> 
-                <div class="tip02" data-value="{&quot;id&quot;:1,&quot;toptitle&quot;:&quot;第二步&quot;,&quot;title&quot;:&quot;点击下载【APP名称】&quot;,&quot;buttontext&quot;:&quot;点击下载 微视&quot;,&quot;openlink&quot;:&quot;https://ww.baidu.com&quot;}">
+                <div class="tip02">
                   如遇提示“无法打开链接”查看设置教程&gt;&gt;
                 </div>
             </div> 
           </div>
-          {{ if iosbackurls.length > 0}}
-          <div class="listli">
-            <div class="top">
-              备用下载
-            </div>
-            <div class="box">
-              <div class="title">备用下载通道</div>
-                <div class="tip03">
-                  以上方式均无法安装的时候请点击备用下载&gt;&gt;
-                </div>
-                <div class="buttonThreeBox">
-                  {{each iosbackurls}}
-                    <div class="button download" data-value="{{$value}}">
-                      <div class="icon">
-                      <img loading="lazy" lazyload="true" mode="heightFix" class="img" src="/public/images/share/icon_w02.png"> 
-                      </div>
-                      <div class="text">备用下载链接{{$index+1}}</div>
-                    </div>
-                  {{/each}}
-                </div>
-            </div>
-          </div>
-          {{/if }}
+          
         </div>
     </div>
 
@@ -410,13 +398,26 @@
       // 
       if (device.isIos){
         // IOS安装教程
-        document.querySelector(".iosbutton_01").addEventListener("click", (e) => {
-          document.querySelector(".IOSfluent").style = "display: block";
-        })
+        for (const iterator of document.querySelectorAll(".iosbutton_01")) {
+          iterator.addEventListener("click", (e) => {
+            let urlInfo = JSON.parse(e.currentTarget.dataset.value);
+            
+            // 0 : 否 1： 是
+            if (urlInfo.updateUrlType === 0){ 
+              downloadFile(urlInfo.updateUrl)
+              return;
+            }
 
-        document.querySelector(".iosbutton_02").addEventListener("click", (e) => {
-          document.querySelector(".lightweight").style = "display: block";
-        })
+            document.querySelector(".IOSfluent").style = "display: block";
+            btnDownload.dataset.value = urlInfo.updateUrl
+          })
+        }
+        
+        if (document.querySelector(".iosbutton_02")){
+          document.querySelector(".iosbutton_02").addEventListener("click", (e) => {
+            document.querySelector(".lightweight").style = "display: block";
+          })
+        }
 
         document.querySelector(".list .tip02").addEventListener("click",(e) => {
           document.querySelector(".IOSfluent").style = "display: none";
@@ -438,6 +439,7 @@
 
         // ios安装教程关闭
         document.querySelector(".tip02close").addEventListener("click",(e) => {
+          document.documentElement.scrollTop = 0
           document.querySelector(".IOSfluent").style = "display: block";
           document.querySelector(".downCourse").style = "display: none";
         });
