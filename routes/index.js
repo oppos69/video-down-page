@@ -103,7 +103,9 @@ router.get('/pc/:x?.html', function(req, res) {
 
    
     res.render('microvideosharepc', { 
-        vcode: code
+        vcode: code,
+        data : encodeURIComponent( JSON.stringify(downData)),
+        renderData : downData,
     });
     
 });

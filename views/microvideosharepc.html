@@ -37,15 +37,14 @@
       </div> 
 
       <div class="advertlist">
-        <div>
-          <image class="adverimg" src="/public/images/share/advert_01.png" mode="widthFix" lazy-load="false" binderror="" bindload=""/> 
-        </div>
-        <div>
-          <image class="adverimg" src="/public/images/share/advert_02.png" mode="widthFix" lazy-load="false" binderror="" bindload=""/> 
-        </div>
-        <div>
-          <image class="adverimg" src="/public/images/share/advert_03.png" mode="widthFix" lazy-load="false" binderror="" bindload=""/> 
-        </div>
+        {{ each renderData.advertlist}}
+          <div> 
+            <a target="blank" href="{{$value.href}}">
+              <img src="{{$value.imgurl}}" class="adverimg" alt="">
+            </a>
+          </div>
+        {{/each}} 
+        
       </div>
 
       <div id="downloadQRCode" class="qrcodeBox">
