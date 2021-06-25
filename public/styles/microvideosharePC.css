@@ -1,0 +1,126 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+
+.PCbody{
+  position: relative;
+  width: 717px;
+  height: auto;
+  margin: 0 auto;
+  background: url(../images/PCshare/bodybg.png) repeat;
+  background-size: 100% auto;
+  padding-top: 80px;
+}
+
+.topbg{
+  margin: 0 44px 36px;
+  width: 630px;
+  height: auto;
+  overflow: hidden;
+}
+
+.topbg .img{
+  display: block;
+  width: 100%;
+}
+
+.PCText_caution{
+  font-size: 27px;
+  color: #EFFF00;
+  width: 432px;
+  height: auto;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 41px;
+  margin-bottom: 80px;
+}
+
+.downloadButton{
+  width: 660px;
+  height: auto;
+  text-align: center;
+  border-radius: 48px;
+  color: #FFF;
+  font-size: 21px;
+  padding: 10px 0;
+  margin: 0 auto 52px;
+  background-color: #0090FF; 
+}
+
+.advertlist{
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding:0 15px;
+}
+
+.adverimg{
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 26px;
+}
+
+
+.qrcodeBox{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; 
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.qrcodeBox .boxtop{
+  position: relative;
+  z-index: 1;
+}
+
+.qrcodeBox .text1{
+  width: 100%;
+  height: auto;
+  text-align: center;
+  color: #fff;
+  font-size: 21px;
+}
+
+.qrcodeBox .text2{
+  width: 100%;
+  height: auto;
+  text-align: center;
+  color: #F7FF00;
+  font-size: 21px;
+}
+
+  
+.qrcodeBox .codeImage .img{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.MaskBg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.boxqr{  
+  padding: 15px;
+  background-color: #fff; 
+  margin: 16px auto;
+}
+
+.boxqr img{
+  display: block;
+}

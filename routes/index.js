@@ -13,17 +13,18 @@ const cfg = config['openapi'][process.env.NODE_ENV || 'dev'];
 
 /* GET home page. */
 router.get('/:x?.html', function(req, res) {
-    let code = "12345"; 
+    let code = "12345";  
     if (null != req.params.x && "" != req.params.x) {
         code = req.params.x;
     }
-    // 判断是否是PC打开链接
-    // if (isPCBrowser(req)){
-        
-    //     res.writeHead(302, {'Location': '/pc/' + code + '.html'});
-    //     res.end()
-    //     return;
-    // }
+ 
+    // 判断是否是PC打开链接 
+    if (isPCBrowser(req)){  
+        res.writeHead(302, {'Location': '/pc/' + code + '.html'});
+        res.end()
+        return;
+    }
+     
     // 判断是否是QQ或者微信内置浏览器
     let showTip = isWeixinOrQQInner(req);
     
@@ -99,7 +100,8 @@ router.get('/pc/:x?.html', function(req, res) {
     if (null != req.params.x && "" != req.params.x) {
         code = req.params.x;
     }
-    
+
+   
     res.render('microvideosharepc', { 
         vcode: code
     });
@@ -143,16 +145,14 @@ router.get('/share', function(req, res) {
         if (null != ret && "" != ret.trim())
         {
             url = ret.charAt(ret.length-1) == '/' ? ret : ret + '/';
-            check(ret);
-            console.log(url);
+            check(ret); 
             res.writeHead(302, {'Location': url + code + '.html?pushId=' + random()});
             console.log(res._header);
             res.end()
         }
         else {
             find(function(val){
-                url = val;
-                console.log(url);
+                url = val; ;
                 res.writeHead(302, {'Location': url + code + '.html?pushId=' + random()});
                 console.log(res._header);
                 res.end()
@@ -173,8 +173,7 @@ router.get('/', function(req, res) {
         if (null != ret && "" != ret.trim())
         {
             url = ret.charAt(ret.length-1) == '/' ? ret : ret + '/';
-            check(ret);
-            console.log(url);
+            check(ret); ;
             res.writeHead(302, {'Location': url + code + '.html'});
             console.log(res._header);
             res.end()

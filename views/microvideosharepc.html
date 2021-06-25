@@ -22,13 +22,99 @@
     <meta name="medium" content="image" />
     <meta name=“viewport” content=“width=device-width, viewport-fit=cover”>
     <link rel="shortcut icon" href="/public/favicon.ico">
-    <link rel="stylesheet" href="/public/styles/microvideoshare.css">
+    <link rel="stylesheet" href="/public/styles/microvideosharePC.css">
 </head>
 <body >
-  PC落地页
+  <div class="PCbody"> 
+      <div class="topbg">
+        <image class="img" src="/public/images/PCshare/topbg.png" mode="widthFix" lazy-load="false" binderror="" bindload="" /> 
+      </div>
+      <div class="PCText_caution">
+        应用报毒为误报，我们依靠广告盈利并非病毒！
+      </div>
+      <div class="downloadButton">
+        立即下载
+      </div> 
+
+      <div class="advertlist">
+        <div>
+          <image class="adverimg" src="/public/images/share/advert_01.png" mode="widthFix" lazy-load="false" binderror="" bindload=""/> 
+        </div>
+        <div>
+          <image class="adverimg" src="/public/images/share/advert_02.png" mode="widthFix" lazy-load="false" binderror="" bindload=""/> 
+        </div>
+        <div>
+          <image class="adverimg" src="/public/images/share/advert_03.png" mode="widthFix" lazy-load="false" binderror="" bindload=""/> 
+        </div>
+      </div>
+
+      <div id="downloadQRCode" class="qrcodeBox">
+          <div class="boxtop">
+            <div class="text1">请使用手机扫码</div>
+            <div class="boxqr">
+              <div class="codeImage" id="qrcodeImagebox"></div>
+            </div> 
+            <div class="text2">请勿使用QQ、微信扫码，以免无法访问</div>
+          </div>
+          <div class="MaskBg closeQRCode"></div>
+      </div>
+  </div>
   
-  <script src="https://hian.com.cn/qrcode.min-1.js" type="text/javascript"></script>
+ 
   <script>window.QRCode || document.write('<script src="/public/scripts/qrcode.min.js" type="text/javascript"><\/script>')</script>
+  <script>
+    
+    var qrcode;
+    var qrcodeIos;
+    function showQRCode(url){
+        var qrcodeOptions = {
+          text: url,
+          width: 400,
+          height: 400,
+          colorDark : "#000000",
+          colorLight : "#ffffff",
+          correctLevel : QRCode.CorrectLevel.H
+        };
+        if (!qrcode){
+          qrcode = new QRCode(document.getElementById("qrcodeImagebox"), qrcodeOptions);
+        }
+        // if (!qrcodeIos) {
+        //   qrcodeOptions.url = iosUrl;
+        //   qrcodeIos = new QRCode(document.getElementById("ios_qrcode"), qrcodeOptions);
+        // }
+        document.querySelector(".downloadButton").addEventListener("click",()=>{ 
+          document.getElementById("downloadQRCode").setAttribute("style", "display:flex")
+        })
+      }
+
+      document.querySelector(".closeQRCode").addEventListener("click",function () { 
+      document.querySelector("#downloadQRCode").setAttribute("style","")
+    })
+
+    function IsPC() {
+        var userAgentInfo = navigator.userAgent;
+        var Agents = ["Android", "iPhone",
+          "SymbianOS", "Windows Phone",
+          "iPad", "iPod"];
+        var flag = true;
+        for (var v = 0; v < Agents.length; v++) {
+          if (userAgentInfo.indexOf(Agents[v]) > 0) {
+            flag = false;
+            break;
+          }
+        }
+        return flag;
+      }
+
+
+        if (IsPC()){ 
+          var href = location.href.split("/pc")  
+          var url = href[0] + href[1]
+          showQRCode(url); 
+        }
+  </script> 
+
+    
 
 </body>
 </html>
