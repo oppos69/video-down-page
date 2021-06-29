@@ -141,29 +141,26 @@ router.get('/downn_device', function(req, res) {
 router.get('/share', function(req, res) {
     var code = req.query.code ? req.query.code : "12345";
     code = code.replace('/','');
-    const jumpUrl = req.protocol + "://" + req.headers['host'] + "/" + code +".html?pushId=" + random();
-    console.log(jumpUrl);
-    res.writeHead(302, {'Location': jumpUrl});
-    res.end();
-    //redis.client.srandmember(redis.downDomains, function(err, ret) {
-    //    var url = DEF_DOMAIN;
-    //    if (null != ret && "" != ret.trim())
-    //    {
-    //        url = ret.charAt(ret.length-1) == '/' ? ret : ret + '/';
-    //        check(ret); 
-    //        res.writeHead(302, {'Location': url + code + '.html?pushId=' + random()});
-    //        console.log(res._header);
-    //        res.end()
-    //    }
-    //    else {
-    //        find(function(val){
-    //            url = val; ;
-    //            res.writeHead(302, {'Location': url + code + '.html?pushId=' + random()});
-    //            console.log(res._header);
+    
+    redis.client.srandmember(redis.downDomains, function(err, ret) {
+        var url = DEF_DOMAIN;
+        if (null != ret && "" != ret.trim())
+        {
+            url = ret.charAt(ret.length-1) == '/' ? ret : ret + '/';
+            check(ret); 
+            res.writeHead(302, {'Location': url + code + '.html?pushId=' + random()});
+            console.log(res._header);
+            res.end()
+        }
+        else {
+            find(function(val){
+                url = val; ;
+                res.writeHead(302, {'Location': url + code + '.html?pushId=' + random()});
+                console.log(res._header);
                 
-    //        });
-    //    }
-    //});
+            });
+        }
+    });
 });
 
 /****
