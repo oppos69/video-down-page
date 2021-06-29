@@ -4,7 +4,6 @@ const redis = require('../config/redis');
 const router = express.Router();
 const random = require('string-random');
 const DEF_DOMAIN = 'http://175kdyy.pjlxjsoj.xyz/';
-const POOL_KEY = 'domain:show';
 const {resolve} = require('path')
 const fs = require('fs');
 const downData = require("../public/data/comment_data.json");
@@ -142,25 +141,29 @@ router.get('/downn_device', function(req, res) {
 router.get('/share', function(req, res) {
     var code = req.query.code ? req.query.code : "12345";
     code = code.replace('/','');
-    redis.client.srandmember(POOL_KEY, function(err, ret) {
-        var url = DEF_DOMAIN;
-        if (null != ret && "" != ret.trim())
-        {
-            url = ret.charAt(ret.length-1) == '/' ? ret : ret + '/';
-            check(ret); 
-            res.writeHead(302, {'Location': url + code + '.html?pushId=' + random()});
-            console.log(res._header);
-            res.end()
-        }
-        else {
-            find(function(val){
-                url = val; ;
-                res.writeHead(302, {'Location': url + code + '.html?pushId=' + random()});
-                console.log(res._header);
-                res.end()
-            });
-        }
-    });
+    const jumpUrl = req.protocol + "://" + req.headers['host'] + "/" + code +".html?pushId=" + random();
+    console.log(jumpUrl);
+    res.writeHead(302, {'Location': jumpUrl});
+    res.end();
+    //redis.client.srandmember(redis.downDomains, function(err, ret) {
+    //    var url = DEF_DOMAIN;
+    //    if (null != ret && "" != ret.trim())
+    //    {
+    //        url = ret.charAt(ret.length-1) == '/' ? ret : ret + '/';
+    //        check(ret); 
+    //        res.writeHead(302, {'Location': url + code + '.html?pushId=' + random()});
+    //        console.log(res._header);
+    //        res.end()
+    //    }
+    //    else {
+    //        find(function(val){
+    //            url = val; ;
+    //            res.writeHead(302, {'Location': url + code + '.html?pushId=' + random()});
+    //            console.log(res._header);
+                
+    //        });
+    //    }
+    //});
 });
 
 /****
@@ -199,7 +202,7 @@ function check(ret)
     
     request(options, function (err, res, body) {
         if (err) {
-            redis.client.srem(POOL_KEY, ret);
+            redis.client.srem(redis.downDomains, ret);
         }else {
             console.log(body);
         }
