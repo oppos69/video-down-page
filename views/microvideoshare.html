@@ -121,7 +121,17 @@
         <div class="list iosDownloads">
           <div class="listli">
             <div class="top">
-              第一步
+              <div class="title">
+                第一步 
+              </div>
+              <div class="topbutton">
+                <a target="_blank" href="https://itunes.apple.com/cn/app/testflight/id899247664?mt=8" class="testflightbutton button" >
+                  <div class="icon"> 
+                    <img loading="lazy" lazyload="true" mode="heightFix" class="img" src="/public/images/share/icon_w01.png"> 
+                  </div>
+                  <div class="text">安装TestFlight</div>
+                </a> 
+              </div>
             </div>
             <div class="box">
               <div class="title">首先安装【TestFlight】然后返回本页</div>
@@ -130,26 +140,36 @@
                   如已安装直接操作第二步
                 </div>
 
-              <a target="_blank" href="https://itunes.apple.com/cn/app/testflight/id899247664?mt=8" class="testflightbutton button" >
+              <!-- <a target="_blank" href="https://itunes.apple.com/cn/app/testflight/id899247664?mt=8" class="testflightbutton button" >
                 <div class="icon"> 
                   <img loading="lazy" lazyload="true" mode="heightFix" class="img" src="/public/images/share/icon_w01.png"> 
                 </div>
                 <div class="text">安装TestFlight</div>
-              </a> 
+              </a>  -->
             </div> 
           </div>
           <div class="listli">
             <div class="top">
-              第二步
+              <div class="title">
+                第二步 
+              </div>
+              <div class="topbutton">
+                <div id="btnDownload" class="button download" data-value="">
+                  <div class="icon"> 
+                    <img loading="lazy" lazyload="true" mode="heightFix" class="img" src="/public/images/share/icon_w02.png"> 
+                  </div>
+                  <div class="text">点击下载 微视</div>
+                </div> 
+              </div>
             </div>
             <div class="box">
               <div class="title">点击下载【APP名称】</div>
-              <div id="btnDownload" class="button download" data-value="">
+              <!-- <div id="btnDownload" class="button download" data-value="">
                 <div class="icon"> 
                   <img loading="lazy" lazyload="true" mode="heightFix" class="img" src="/public/images/share/icon_w02.png"> 
                 </div>
                 <div class="text">点击下载 微视</div>
-              </div> 
+              </div>  -->
                 <div class="tip02">
                   如遇提示“无法打开链接”查看设置教程&gt;&gt;
                 </div>
@@ -262,6 +282,7 @@
   
   <input id="bar2" style="position: fixed; top: 0;opacity: 0;width: 1px;"></input>
   <input id="codeSign" type="hidden" value="{{vcode}}"/>
+   
    
   <!-- 优先绑定点击下载事件 -->
   <script>
