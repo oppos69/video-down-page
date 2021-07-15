@@ -326,13 +326,18 @@ body{
 }
 
 .IOSfluent .top .title{
-  font-size: 21px;
+  font-size: 18px;
   font-weight: bold;
   color: #fff;
 }
- 
+.IOSfluent .topbutton {
+  width: 0;
+  flex-grow: 1;
+  max-width: 258px;
+}
 .IOSfluent .topbutton .button{
   background-color: #fff;
+  
 }
 
  
@@ -340,8 +345,8 @@ body{
 .IOSfluent .list .button{
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 276px;
+  align-items: center; 
+  width: 100%;
   height: auto;
   padding: 8px 0;
   border-radius: 22px;
@@ -349,6 +354,7 @@ body{
   margin: 0 auto;
   font-weight: bold;
   text-decoration: none;
+  font-size: 16px;
 }
 
 .IOSfluent .list .icon{
