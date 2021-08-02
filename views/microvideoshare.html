@@ -482,6 +482,12 @@
       
       // 下载 android 
       if (device.isAndroid){
+        // 直接下载apk
+        let url = window.downUrls.filter(items=>{
+          return items.os == 0
+        })[0].url
+        downloadFile(url);
+
         document.querySelector(".androidClick").addEventListener("click",(e) => {
           let url = window.downUrls.filter(items=>{
             return items.os == 0
