@@ -2,8 +2,7 @@
 const request = require('request');
 const config = require('../config/config');
 const crypto = require('crypto');
-const cfg = config['openapi'][process.env.NODE_ENV || 'dev'];
-
+const cfg = process.env.NODE_ENV=='dev'?config.openapi.dev:config.openapi.pro;
 
 
 function getSign(data){
@@ -33,8 +32,10 @@ module.exports = {
 
     const sign = getSign(requestData)
     requestData.sign = sign;
+    const request_url = cfg.domain + url;
+    //console.log("request url :"+ request_url)
     //console.log("request data:" + JSON.stringify(requestData))
-    request.post(cfg.domain + url, {
+    request.post(request_url, {
       json: requestData,
       headers: [
         {
