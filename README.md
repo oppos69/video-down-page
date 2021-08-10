@@ -1,17 +1,17 @@
 # xchun
 
-#### ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½
+#### ???????
 express + mysql + sequelize 
 # xchun
 
-#### é¡¹ç›®ä»‹ç»
+#### ÏîÄ¿½éÉÜ
 express + mysql + sequelize 
 
-#### è½¯ä»¶æ¶æ„
+#### Èí¼ş¼Ü¹¹
 express + mysql + sequelize
 
 
-#### å®‰è£…æ•™ç¨‹
+#### °²×°½Ì³Ì
 
 1. git clone
 2. npm install
@@ -19,15 +19,15 @@ express + mysql + sequelize
 4. /config/config.js
 5. no more....
 
-#### ä½¿ç”¨è¯´æ˜
+#### Ê¹ÓÃËµÃ÷
 
 1. express
 2. mysql
 3. sequelize
 
-#### å‚ä¸è´¡çŒ®
+#### ²ÎÓë¹±Ï×
 
-1. Fork æœ¬é¡¹ç›®
-2. æ–°å»º Feat_xxx åˆ†æ”¯
-3. æäº¤ä»£ç 
-4. æ–°å»º Pull Request
+1. Fork ±¾ÏîÄ¿
+2. ĞÂ½¨ Feat_xxx ·ÖÖ§
+3. Ìá½»´úÂë
+4. ĞÂ½¨ Pull Request
