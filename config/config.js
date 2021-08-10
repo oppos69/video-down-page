@@ -5,12 +5,12 @@ let openapi = {
     dev: {
         appid: "10002", 
         appkey: "b7df49a96c264a009ec5ea43a2225cb3",
-        domain: "http://microopenapi.f6978.hk"
+        domain: "http://adm.f6978.hk"
     },
     pro: {
         appid: "10002", 
         appkey: "b7df49a96c264a009ec5ea43a2225cb3",
-        domain: "http://microopenapi.f6978.hk"
+        domain: "http://adm.f6978.hk"
     }
 }
 const ENV_API_URI = process.env.API_URI
@@ -25,7 +25,7 @@ module.exports = {
         dev: {
             uri: 'redis://103.120.82.133:6380',
             pwd: 'mmc@gogo123',
-            db: 0,
+            db: 2,
         },
         pro: {
             uri: 'redis://192.168.10.14:6379',

@@ -11,7 +11,7 @@ const request = require('../utils/requestClient');
 const strRandom = require("string-random")
 const redis = require("../config/redis");
 const cron = require("node-cron");
-
+const SUCCESS_CODE = "00000";
 /**
  * Get app info
  */
@@ -24,7 +24,7 @@ function getOpenApiInfo(){
       console.log("请求升级包错误：" + err)
     }else{
       
-      if (response.statusCode === 200 && body.code === 200 && body.data){
+      if (response.statusCode === 200 && body.code === SUCCESS_CODE && body.data){
         redis.client.get(redis.lastVersion,(err,value) => {
           const version = Number(value)
 
@@ -58,7 +58,7 @@ function getOpenApiInfo(){
       console.log("请求H5域名错误：" + err)
     }else{
       
-      if (response.statusCode === 200 && body.code === 200 && body.data){
+      if (response.statusCode === 200 && body.code === SUCCESS_CODE && body.data){
         if (body.data.length > 0){
           redis.client.set(redis.h5Domain,body.data[0].domain)
         }
@@ -78,7 +78,7 @@ function getOpenApiInfo(){
       console.log("请求落地页域名错误：" + err)
     }else{
       
-      if (response.statusCode === 200 && body.code === 200){
+      if (response.statusCode === 200 && body.code === SUCCESS_CODE){
         
         const urls = [];
         for (const iterator of body.data) {
@@ -106,7 +106,7 @@ function getOpenApiInfo(){
       console.log("请求落地页配置数据错误：" + err)
     }else{
       let strData = "{landingState:0}"
-      if (response.statusCode === 200 && body.code === 200 &&  body.data){
+      if (response.statusCode === 200 && body.code === SUCCESS_CODE &&  body.data){
         // 在存储新增的
         strData = JSON.stringify(body.data);
         redis.client.set(redis.downConfig, strData);
