@@ -2,7 +2,7 @@ const redis = require('redis');
 const config = require('./config');
 
 //export NODE_ENV=dev
-const cfg = process.env.NODE_ENV=='dev'?config.redis.dev:config.redis.pro;
+const cfg = process.env.NODE_ENV=='pro'?config.redis.pro:config.redis.dev;
 
 const ENV_REDIS_URI = process.env.REDIS_URI
 console.log("env_redis_uri:" ,ENV_REDIS_URI)
