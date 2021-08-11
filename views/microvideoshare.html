@@ -66,12 +66,21 @@
       <div class="IOS_bottom">
         <img src="/public/images/share/icon_w02.png" class="appicon" alt="">
         <div class="and_tip">应用报毒为误报，我们依靠广告盈利并非病毒！</div>
+        {{ if jsonConfig.landingState == 1}}
+          <div class="ios_button iosbutton_02" data-value="1">
+            <div>iOS轻量版下载</div>
+            <div class="small">备用</div>
+            <img class="icon" src="/public/images/share/icon01.png" />
+          </div>
+        {{/if}}
         <div class="ios_button iosbutton_01" data-value="{{iosdownloadurl}}">
           <div>iOS流畅版下载</div>
           <div class="small">稳定流畅，功能完整</div>
+          {{ if jsonConfig.landingState != 1}}
           <img class="icon" src="/public/images/share/icon01.png" />
+          {{/if}}
         </div>
-
+        
         {{each iosbackurls}}
           <div class="ios_button iosbutton_01" data-value="{{$value}}">
             <div>备用下载链接{{$index+1}}</div>
@@ -79,12 +88,7 @@
           </div>
         {{/each}}
 
-        {{ if jsonConfig.landingState == 1}}
-          <div class="ios_button iosbutton_02" data-value="1">
-            <div>iOS轻量版下载</div>
-            <div class="small">备用</div>
-          </div>
-        {{/if}}
+        
       </div>
       
       <div class="advertisement">
